@@ -34,12 +34,14 @@
             <StackLayout>
                 <Label Text="{Static resources:AppResources.date}"/>
                 <editors:DateEdit x:Name="date1_edit" 
-                                  Date="{Binding Date1,Mode=OneWayToSource}"/>
+                                  Date="{Binding Date1,Mode=OneWayToSource}"
+                                  MinDate="{Binding CurrentDate}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="{Static resources:AppResources.otherdate}"/>
                 <editors:DateEdit x:Name="date2_edit" 
-                                  Date="{Binding Date2,Mode=OneWayToSource}"/>
+                                  Date="{Binding Date2,Mode=OneWayToSource}"
+                                  MinDate="{Binding CurrentDate}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="{Static resources:AppResources.preftime}"/>
@@ -49,8 +51,11 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button Text="{Static resources:AppResources.choosefile}" Clicked="Button_Clicked"/>
-                <Label x:Name="LabelInfo"/>
+                <Button x:Name="photo_button" 
+                        Text="{Static resources:AppResources.photo}" 
+                        Clicked="photo_button_Clicked"/>
             </StackLayout>
+            <Label x:Name="LabelInfo"/>
             <Grid Margin="0,10,0,0">
                 <Button Text="{Static resources:AppResources.submit}"
                         Clicked="Submit_Clicked"

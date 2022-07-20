@@ -3,6 +3,7 @@ using HWA.Resources;
 using HWA.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -14,42 +15,34 @@ namespace HWA.ViewModels
     {
         public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
         public Command PanicCommand { get; }
+        public Command StopTimer { get; }
         public MainMenuViewModel()
         {
-            MenuItems = new ObservableCollection<MenuItemViewModel>()
-            {
-                new MenuItemViewModel{ Image="doc.png", ItemName = AppResources.docappointment, PageName=nameof(DoctorAppointmentPage)},
-                new MenuItemViewModel{ Image="schedule.png", ItemName = AppResources.centerappointment, PageName=nameof(CenterAppointmentPage)},
-                new MenuItemViewModel{ Image="healthgraph.png", ItemName = AppResources.checkup, PageName=nameof(CheckupPage)},
-                new MenuItemViewModel{ Image="hospital.png", ItemName = AppResources.hospitalization, PageName = nameof(HospitalizationPage)},
-                new MenuItemViewModel{ Image="search.png", ItemName = AppResources.netlist, PageName = nameof(NetListPage)},
-                new MenuItemViewModel{ Image="logout.png", ItemName = AppResources.logoff, OpenServiceCommand = new Command(async () => await Logout())},
-            };
-            //MenuItems = new ObservableCollection<MenuItemViewModel>();
-            PanicCommand = new Command(async () => await PanicPressed());
-        }
-        private async Task Logout()
-        {
-            Preferences.Remove("customer_id");
-            await Shell.Current.GoToAsync("//LoginPage");
+            //MenuItems = new ObservableCollection<MenuItemViewModel>()
+            //{
+            //    new MenuItemViewModel{ Image="doc.png", ItemName = AppResources.docappointment, PageName=nameof(DoctorAppointmentPage)},
+            //    new MenuItemViewModel{ Image="schedule.png", ItemName = AppResources.centerappointment, PageName=nameof(CenterAppointmentPage)},
+            //    new MenuItemViewModel{ Image="healthgraph.png", ItemName = AppResources.checkup, PageName=nameof(CheckupPage)},
+            //    new MenuItemViewModel{ Image="hospital.png", ItemName = AppResources.hospitalization, PageName = nameof(HospitalizationPage)},
+            //    new MenuItemViewModel{ Image="search.png", ItemName = AppResources.netlist, PageName = nameof(NetListPage)},
+            //};
+            MenuItems = new ObservableCollection<MenuItemViewModel>();
+            PanicCommand = new Command(async () =>await CountdownToPanic());
+            StopTimer = new Command(() => Panic_Warning = false);
+            //PanicCommand = new Command(async () => await PanicPressed());
         }
         public void OnAppearing() 
         {
-            //CheckUserValidOperations();
+            CheckUserValidOperations();
         }
         private void CheckUserValidOperations()
         {
             if (App.Customer == null)
                 return;
             string[] operations = App.Customer.InsuranceProgramValidOperations.Split(',');
-            foreach(string operation in operations)
+            MenuItems.Clear();
+            foreach (string operation in operations)
                 ActivateProgram(operation);
-            MenuItems.Add(new MenuItemViewModel 
-            { 
-                Image = "logout.png", 
-                ItemName = AppResources.logoff, 
-                OpenServiceCommand = new Command(async () => await Logout()) 
-            });
         }
         private void ActivateProgram(string operation)
         {
@@ -111,6 +104,21 @@ namespace HWA.ViewModels
             get { return panicIsVisible; }
             set { SetProperty(ref panicIsVisible, value); }
         }
+        private bool panic_Warning;
+
+        public bool Panic_Warning
+        {
+            get { return panic_Warning; }
+            set { SetProperty(ref panic_Warning, value); }
+        }
+        private string timerInfo;
+
+        public string TimerInfo
+        {
+            get { return timerInfo; }
+            set { SetProperty(ref timerInfo,value); }
+        }
+
         private async Task PanicPressed()
         {
             PanicButton panicButton = new PanicButton();
@@ -167,6 +175,32 @@ namespace HWA.ViewModels
             if (cts != null && !cts.IsCancellationRequested)
                 cts.Cancel();
             return location;
+        }
+        private async Task CountdownToPanic()
+        {
+            Stopwatch timer = new Stopwatch();
+            // open pop up 
+            Panic_Warning = true;
+            //start counting
+            timer.Start();
+            await Task.Run(() => 
+            {
+                while (timer.Elapsed.TotalSeconds <= 10)
+                {
+                    TimerInfo =(10 - timer.Elapsed.TotalSeconds).ToString("0");
+                    //stop timer
+                    if (!Panic_Warning)
+                        return;
+                }
+            });
+            //cancel operation
+            if (!Panic_Warning)
+                return;
+            timer.Stop();
+            Panic_Warning = false;
+            //start operation
+            Console.WriteLine("PANIC!!!");
+            await PanicPressed();
         }
     }
 }

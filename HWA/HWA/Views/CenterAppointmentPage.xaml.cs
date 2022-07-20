@@ -41,6 +41,37 @@ namespace HWA.Views
                 Console.WriteLine(ex);
             }
         }
+        private async void photo_button_Clicked(object sender, EventArgs e)
+        {
+            await TakePhotoAsync();
+        }
+        async Task TakePhotoAsync()
+        {
+            try
+            {
+                var photo = await MediaPicker.CapturePhotoAsync();
+                if (photo == null)
+                    return;
+                LabelInfo.Text = photo.FileName;
+                _viewModel.File = photo;
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature is not supported on the device
+                Console.WriteLine($"CapturePhotoAsync Feature is not supported on the device");
+
+            }
+            catch (PermissionException pEx)
+            {
+                // Permissions not granted
+                Console.WriteLine($"CapturePhotoAsync Permissions not granted");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"CapturePhotoAsync THREW: {ex.Message}");
+            }
+        }
 
         private void Submit_Clicked(object sender, EventArgs e)
         {
@@ -59,5 +90,7 @@ namespace HWA.Views
             return centers_edit.HasError || city_edit.HasError ||
                 area_edit.HasError || date1_edit.HasError || date2_edit.HasError || time_edit.HasError;
         }
+
+        
     }
 }

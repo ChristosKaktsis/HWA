@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="http://schemas.devexpress.com/xamarin/2014/forms/editors"
+             xmlns:resources="clr-namespace:HWA.Resources"
+             x:Class="HWA.Views.ProfilePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="editors:TextEdit">
+                <Setter Property="TextFontSize" Value="15"/>
+                <Setter Property="LabelFontSize" Value="13"/>
+                <Setter Property="IsReadOnly" Value="True"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame HasShadow="False" BorderColor="LightGray">
+                <StackLayout>
+                    
+                    <Label Text="Profile" 
+                           FontSize="20" FontAttributes="Bold"/>
+                    <editors:TextEdit Text="{Binding ContractNo,Mode=OneWay}"
+                                      LabelText="{Static resources:AppResources.contractNo}"
+                                      HasError="{Binding ContracrHasError}"
+                                      Keyboard="Numeric"/>
+                    <editors:TextEdit Text="{Binding CustomerCode}"
+                                      LabelText="{Static resources:AppResources.customercode}"
+                                      HasError="{Binding CodeHasError}"
+                                      Keyboard="Numeric"/>
+                    <editors:TextEdit Text="{Binding Phone}" 
+                                      Keyboard="Telephone"
+                                      LabelText="{Static resources:AppResources.phoneNo}"/>
+                    <editors:TextEdit Text="{Binding Email}" 
+                                      Keyboard="Email"
+                                      LabelText="{Static resources:AppResources.email}"/>
+                </StackLayout>
+            </Frame>
+            <Button Margin="10" 
+                    Text="{x:Static resources:AppResources.logoff}"
+                    BackgroundColor="{StaticResource Warning}"
+                    VerticalOptions="End"
+                    Command="{Binding LogoutCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

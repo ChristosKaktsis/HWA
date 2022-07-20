@@ -295,11 +295,29 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Έχετε πατήσει το κουμπί πανικού. Το σήμα θα σταλεί σε.
+        /// </summary>
+        internal static string panicwarning {
+            get {
+                return ResourceManager.GetString("panicwarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Τηλέφωνο.
         /// </summary>
         internal static string phoneNo {
             get {
                 return ResourceManager.GetString("phoneNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Φωτογραφία.
+        /// </summary>
+        internal static string photo {
+            get {
+                return ResourceManager.GetString("photo", resourceCulture);
             }
         }
         

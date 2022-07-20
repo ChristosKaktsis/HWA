@@ -38,6 +38,7 @@ namespace HWA.ViewModels
             get { return title; }
             set { SetProperty(ref title, value); }
         }
+        public DateTime CurrentDate { get => DateTime.Now;  }
         protected async void Cancel()
         {
             // This will pop the current page off the navigation stack

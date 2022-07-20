@@ -36,12 +36,14 @@
             <StackLayout>
                 <Label Text="{Static resources:AppResources.date}"/>
                 <editors:DateEdit x:Name="date1_edit" 
-                                  Date="{Binding Date1,Mode=OneWayToSource}"/>
+                                  Date="{Binding Date1,Mode=OneWayToSource}"
+                                  MinDate="{Binding CurrentDate}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="{Static resources:AppResources.otherdate}"/>
                 <editors:DateEdit x:Name="date2_edit" 
-                                  Date="{Binding Date2,Mode=OneWayToSource}"/>
+                                  Date="{Binding Date2,Mode=OneWayToSource}"
+                                  MinDate="{Binding CurrentDate}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="{Static resources:AppResources.preftime}"/>

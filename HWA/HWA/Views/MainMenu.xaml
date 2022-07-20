@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview" 
+             xmlns:dxp="http://schemas.devexpress.com/xamarin/2014/forms/popup"
              xmlns:local="clr-namespace:HWA.Views" 
              xmlns:resources="clr-namespace:HWA.Resources"
              xmlns:vm="clr-namespace:HWA.ViewModels"
@@ -54,6 +54,27 @@
             <ActivityIndicator IsRunning="{Binding IsBusy}"
                                Grid.Row="2"
                                VerticalOptions="End"/>
+            <dxp:DXPopup IsOpen="{Binding Panic_Warning}"
+                         AllowScrim="True"
+                         CornerRadius="5">
+                <Frame CornerRadius="5"
+                       WidthRequest="300">
+                    <StackLayout>
+                        <Label Text="{Static resources:AppResources.panicwarning}" 
+                               Margin="10"
+                               HorizontalOptions="Center"
+                               FontSize="20" FontAttributes="Bold"/>
+                        <Label Text="{Binding TimerInfo,Mode=OneWay}" 
+                               Margin="0,0,0,15"
+                               HorizontalOptions="Center"
+                               FontSize="20" FontAttributes="Bold"/>
+                        <Button Text="{Static resources:AppResources.cancel}"
+                                BackgroundColor="{StaticResource Warning}"
+                                HorizontalOptions="Center"
+                                Command="{Binding StopTimer}"/>
+                    </StackLayout>
+                </Frame>
+            </dxp:DXPopup>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

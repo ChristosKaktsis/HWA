@@ -20,10 +20,26 @@ namespace HWA.ViewModels
         {
             LoginCommand = new Command(OnLoginClicked);
         }
-        public string ContractNo { get; set; }
-        public string CustomerCode { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
+        public string ContractNo 
+        { 
+            get => Preferences.Get(nameof(ContractNo), ""); 
+            set => Preferences.Set(nameof(ContractNo), value); 
+        }
+        public string CustomerCode 
+        { 
+            get => Preferences.Get(nameof(CustomerCode), "");
+            set => Preferences.Set(nameof(CustomerCode), value);
+        }
+        public string Phone
+        {
+            get => Preferences.Get(nameof(Phone), "");
+            set => Preferences.Set(nameof(Phone), value);
+        }
+        public string Email
+        {
+            get => Preferences.Get(nameof(Email), "");
+            set => Preferences.Set(nameof(Email), value);
+        }
         public bool ContracrHasError 
         { 
             get => _ContracrHasError; 

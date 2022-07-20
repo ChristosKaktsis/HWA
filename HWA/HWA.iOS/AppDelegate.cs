@@ -25,6 +25,7 @@ namespace HWA.iOS
             global::Xamarin.Forms.Forms.Init();
             DevExpress.XamarinForms.CollectionView.iOS.Initializer.Init();
             DevExpress.XamarinForms.Editors.iOS.Initializer.Init();
+            DevExpress.XamarinForms.Popup.iOS.Initializer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
