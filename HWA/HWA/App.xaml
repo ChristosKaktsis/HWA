@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="http://schemas.devexpress.com/xamarin/2014/forms/editors"
+             x:Class="HWA.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#039BE5</Color>
+            <Color x:Key="PrimaryLight">#81d3fa</Color>
+            <Color x:Key="Complementary">#e54e03</Color>
+            <Color x:Key="Analogous">#009962</Color>
+            <Color x:Key="Triadic">#e5039a</Color>
+            <Color x:Key="Warning">red</Color>
+            <Color x:Key="Background">#ffffff</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextTransform" Value="None"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style x:Key="ReverseButton" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
+                <Setter Property="TextTransform" Value="None"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style x:Key="ErrorButton" TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextTransform" Value="None"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Warning}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="editors:ComboBoxEdit">
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="IsFilterEnabled" Value="True"/>
+            </Style>
+            <Style TargetType="editors:DateEdit">
+                <Setter Property="HeightRequest" Value="45"/>
+            </Style>
+            <!--deletethisafterdatainput-->
+            <x:Array Type="{x:Type x:String}" x:Key="city">
+                <x:String>Θεσσαλονίκη</x:String>
+                <x:String>Αθήνα</x:String>
+            </x:Array>
+            <x:Array Type="{x:Type x:String}" x:Key="athens_region">
+                <x:String>Μοναστηράκι</x:String>
+                <x:String>Πλάκα</x:String>
+                <x:String>Κολωνάκι</x:String>
+            </x:Array>
+            <x:Array Type="{x:Type x:String}" x:Key="thess_region">
+                <x:String>Αμπελόκηποι</x:String>
+                <x:String>Λαδάδικα</x:String>
+                <x:String>Τούμπα</x:String>
+            </x:Array>
+            <x:Array Type="{x:Type x:String}" x:Key="thess_center">
+                <x:String>Διαγνωστικό Κέντρο Βioεξέλιξη Εύοσμου</x:String>
+                <x:String>BIODIAGNOSI CHECK UP LTD</x:String>
+                <x:String>Βιοιατρική Βασ. Όλγας</x:String>
+            </x:Array>
+            <x:Array Type="{x:Type x:String}" x:Key="athens_center">
+                <x:String>ΚΟΣΜΟΙΑΤΡΙΚΗ ΑΝΩ ΠΑΤΗΣΙΩΝ</x:String>
+                <x:String>ΕΥΡΩΔΙΑΓΝΩΣΤΙΚΗ Α.Ε.</x:String>
+                <x:String>Βιοιατρική Λ. Αλεξάνδρας</x:String>
+            </x:Array>
+            <x:Array Type="{x:Type x:String}" x:Key="thess_clin">
+                <x:String>Euromedica</x:String>
+                <x:String>Βιοκλινική Θεσσαλονίκης</x:String>
+                <x:String>Genesis Clinic</x:String>
+            </x:Array>
+            <x:Array Type="{x:Type x:String}" x:Key="athens_clin">
+                <x:String>Central Clinic of Athens SA</x:String>
+                <x:String>Lefkos Stavros - The Athens Clinic</x:String>
+                <x:String>ΕΥΡΩΚΛΙΝΙΚΗ ΑΘΗΝΩΝ</x:String>
+            </x:Array>
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>

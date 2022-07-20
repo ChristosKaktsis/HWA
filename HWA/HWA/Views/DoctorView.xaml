@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:data="clr-namespace:HWA.Data"
+       x:Class="HWA.Views.DoctorView"
+             HasShadow="False">
+    <Grid x:DataType="data:Doctor">
+        <Label Text="{Binding Caption}"/>
+        <Label Grid.Column="1"
+               Text="{Binding Specialty}"/>
+        <Label Grid.Column="2"
+               Text="{Binding Address}"/>
+    </Grid>
+</Frame>

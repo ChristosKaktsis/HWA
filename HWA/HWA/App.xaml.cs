@@ -1,0 +1,39 @@
+﻿using HWA.Data;
+using HWA.Services;
+using System.Globalization;
+using System.Threading;
+using Xamarin.Essentials;
+using Xamarin.Forms;
+
+namespace HWA
+{
+    public partial class App : Application
+    {
+        public static Customer Customer { get; set; }
+        CustomerManager customerManager = new CustomerManager();
+
+        public App()
+        {
+            DevExpress.XamarinForms.Editors.Initializer.Init();
+            DevExpress.XamarinForms.CollectionView.Initializer.Init();
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InstalledUICulture;
+            InitializeComponent();
+
+            DependencyService.Register<MockDataStore>();
+            MainPage = new AppShell();
+        }
+
+        protected override async void OnStart()
+        {
+            await Shell.Current.GoToAsync("//LoginPage");
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override void OnResume()
+        {
+        }
+    }
+}

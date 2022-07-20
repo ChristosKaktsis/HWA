@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:resources="clr-namespace:HWA.Resources" 
+             xmlns:editors="http://schemas.devexpress.com/xamarin/2014/forms/editors" 
+             xmlns:local="clr-namespace:HWA.Views"
+             x:Class="HWA.Views.NetListPage"
+             Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="docTemplate">
+                <local:DoctorView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Margin="10">
+                <Label Text="{Static resources:AppResources.netlist}"
+                   FontSize="20"/>
+                <BoxView HeightRequest="1" Color="Gray"/>
+                <StackLayout>
+                    <Label Text="{Static resources:AppResources.city}"/>
+                    <editors:ComboBoxEdit x:Name="city_edit"
+                                      ItemsSource="{Binding Cities}"
+                                      SelectedItem="{Binding SelectedCity}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="{Static resources:AppResources.area}"/>
+                    <editors:ComboBoxEdit x:Name="area_edit" 
+                                      ItemsSource="{Binding Areas}"
+                                      SelectedItem="{Binding SelectedArea}"/>
+                </StackLayout>
+                <Grid Margin="0,10,0,0">
+                    <Button Text="{Static resources:AppResources.search}"
+                        Command="{Binding LoadCommand}"
+                        IsEnabled="{Binding LockButton}"
+                        Grid.Column="1"/>
+                    <Button Text="{Static resources:AppResources.cancel}"
+                        Style="{StaticResource ReverseButton}"
+                        Command="{Binding CancelCommand}"
+                        Grid.Column="0"/>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   Grid.Column="1"/>
+                </Grid>
+                <Frame>
+                    <Grid>
+                        <Label Text="{Static resources:AppResources.name}"
+                       Grid.Column="0"/>
+                        <Label Text="{Static resources:AppResources.specialty}"
+                       Grid.Column="1"/>
+                        <Label Text="{Static resources:AppResources.address}"
+                       Grid.Column="2"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <CollectionView ItemsSource="{Binding Doctors}"
+                            ItemTemplate="{StaticResource docTemplate}"
+                            Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

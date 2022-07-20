@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:HWA.Resources" 
+             xmlns:editors="http://schemas.devexpress.com/xamarin/2014/forms/editors" 
+             xmlns:vm="clr-namespace:HWA.ViewModels"
+             x:Class="HWA.Views.CheckupPage" 
+             Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Content>
+        <StackLayout x:DataType="vm:CheckUpViewModel" Margin="10">
+            <Label Text="{Static resources:AppResources.checkup}"
+                   FontSize="20"/>
+            <BoxView HeightRequest="1" Color="Gray"/>
+            <StackLayout>
+                <Label Text="{Static resources:AppResources.city}"/>
+                <editors:ComboBoxEdit x:Name="city_edit"
+                                      ItemsSource="{Binding Cities}"
+                                      SelectedItem="{Binding SelectedCity,Mode=OneWayToSource}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Static resources:AppResources.area}"/>
+                <editors:ComboBoxEdit x:Name="area_edit"
+                                      ItemsSource="{Binding Areas}"
+                                      SelectedItem="{Binding SelectedArea}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Static resources:AppResources.center}"/>
+                <editors:ComboBoxEdit x:Name="centers_edit"
+                                      ItemsSource="{Binding Centers}"
+                                      SelectedItem="{Binding SelectedCenter}"
+                                      DisplayMember="Caption"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Static resources:AppResources.package}"/>
+                <editors:ComboBoxEdit x:Name="package_edit"
+                                      ItemsSource="{Binding Packages}"
+                                      SelectedItem="{Binding SelectedPackage,Mode=OneWayToSource}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Static resources:AppResources.date}"/>
+                <editors:DateEdit x:Name="date1_edit"
+                                  Date="{Binding Date1,Mode=OneWayToSource}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Static resources:AppResources.otherdate}"/>
+                <editors:DateEdit x:Name="date2_edit" 
+                                  Date="{Binding Date2,Mode=OneWayToSource}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Static resources:AppResources.preftime}"/>
+                <editors:ComboBoxEdit x:Name="time_edit"
+                                      ItemsSource="{Binding PrefTimes}"
+                                      SelectedItem="{Binding SelectedTime,Mode=OneWayToSource}"/>
+            </StackLayout>
+            <Grid Margin="0,10,0,0">
+                <Button Text="{Static resources:AppResources.submit}"
+                        Clicked="Submit_Clicked"
+                        IsEnabled="{Binding LockButton}"
+                        Grid.Column="1"/>
+                <Button Text="{Static resources:AppResources.cancel}"
+                        Style="{StaticResource ReverseButton}"
+                        Command="{Binding CancelCommand}"
+                        Grid.Column="0"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

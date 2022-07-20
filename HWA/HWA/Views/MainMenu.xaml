@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview" 
+             xmlns:local="clr-namespace:HWA.Views" 
+             xmlns:resources="clr-namespace:HWA.Resources"
+             xmlns:vm="clr-namespace:HWA.ViewModels"
+             x:Class="HWA.Views.MainMenu">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="main">
+                <local:MenuItemView/>
+            </DataTemplate>
+            <x:Array Type="{x:Type x:String}" x:Key="s">
+                <x:String>babe g</x:String>
+                <x:String>babe d</x:String>
+                <x:String>babe gs</x:String>
+                <x:String>babe h</x:String>
+                <x:String>babe gsd</x:String>
+                <x:String>babe hd</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:DataType="vm:MainMenuViewModel" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Padding="0"
+                   HeightRequest="110" 
+                   HasShadow="False">
+                <StackLayout >
+                    <Image Source="logoWhite.png"
+                           HeightRequest="120"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="1" 
+                    Style="{StaticResource ErrorButton}"
+                    Text="{Static resources:AppResources.panicbtn}"
+                    FontSize="20"
+                    Margin="10,0,10,0"
+                    Command="{Binding PanicCommand}"
+                    IsEnabled="{Binding LockButton}"
+                    IsVisible="{Binding PanicIsVisible}"/>
+            <CollectionView Grid.Row="2" 
+                            ItemsSource="{Binding MenuItems}" 
+                            ItemTemplate="{StaticResource main}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               Grid.Row="2"
+                               VerticalOptions="End"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
