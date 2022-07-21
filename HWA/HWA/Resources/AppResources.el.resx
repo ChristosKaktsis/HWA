@@ -180,11 +180,17 @@
   <data name="logoff" xml:space="preserve">
     <value>Αποσύνδεση</value>
   </data>
+  <data name="mainmenu" xml:space="preserve">
+    <value>Κύριο μενού</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Όνομα</value>
   </data>
   <data name="netlist" xml:space="preserve">
     <value>Λίστα Δικτύου</value>
+  </data>
+  <data name="new" xml:space="preserve">
+    <value>δδ</value>
   </data>
   <data name="otherdate" xml:space="preserve">
     <value>Εναλλακτική ημερομηνία</value>
@@ -206,6 +212,9 @@
   </data>
   <data name="preftime" xml:space="preserve">
     <value>Προτιμώμενη ώρα</value>
+  </data>
+  <data name="profile" xml:space="preserve">
+    <value>Προφίλ</value>
   </data>
   <data name="search" xml:space="preserve">
     <value>Αναζήτηση</value>

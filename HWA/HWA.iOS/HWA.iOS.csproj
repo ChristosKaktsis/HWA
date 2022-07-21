@@ -172,4 +172,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\logout.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mainmenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile.png" />
+  </ItemGroup>
 </Project>

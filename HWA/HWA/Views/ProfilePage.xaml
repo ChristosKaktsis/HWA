@@ -17,7 +17,7 @@
         <StackLayout>
             <Frame HasShadow="False" BorderColor="LightGray">
                 <StackLayout>
-                    
+
                     <Label Text="Profile" 
                            FontSize="20" FontAttributes="Bold"/>
                     <editors:TextEdit Text="{Binding ContractNo,Mode=OneWay}"

@@ -180,11 +180,17 @@
   <data name="logoff" xml:space="preserve">
     <value>Logoff</value>
   </data>
+  <data name="mainmenu" xml:space="preserve">
+    <value>Main menu</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="netlist" xml:space="preserve">
     <value>Network List</value>
+  </data>
+  <data name="new" xml:space="preserve">
+    <value>dd</value>
   </data>
   <data name="otherdate" xml:space="preserve">
     <value>Alternative date</value>
@@ -206,6 +212,9 @@
   </data>
   <data name="preftime" xml:space="preserve">
     <value>Preferred time</value>
+  </data>
+  <data name="profile" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="search" xml:space="preserve">
     <value>search</value>
