@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:HWA.ViewModels" 
+             xmlns:editors="http://schemas.devexpress.com/xamarin/2014/forms/editors"
+             xmlns:resources="clr-namespace:HWA.Resources"
+             x:Class="HWA.Views.ClaimsSubPage"
+             Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Content>
+        <StackLayout x:DataType="vm:ClaimsSubViewModel" Margin="10">
+            <Label Text="{Static resources:AppResources.claimsSub}"
+                   FontSize="20"/>
+            <BoxView HeightRequest="1" Color="Gray"/>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="photo_button" 
+                        Clicked="photo_button_Clicked"
+                        Text="{Static resources:AppResources.choosefile}"/>
+            </StackLayout>
+            <Label x:Name="LabelInfo"/>
+
+            <editors:FilterChipGroup x:Name="Chip_Collection"
+                                     
+                                     IsMultiline="True"
+                                     DisplayMember="FileName"
+                                     ChipRemoveIconClicked="Chip_Collection_ChipRemoveIconClicked"/>
+
+
+            <Grid Margin="0,10,0,0"
+                  VerticalOptions="End">
+                <Button Text="{Static resources:AppResources.submit}"
+                        IsEnabled="{Binding LockButton}"
+                        Command="{Binding SubmitCommand}"
+                        Grid.Column="1"/>
+                <Button Text="{Static resources:AppResources.cancel}"
+                        Style="{StaticResource ReverseButton}"
+                        Command="{Binding CancelCommand}"
+                        Grid.Column="0"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

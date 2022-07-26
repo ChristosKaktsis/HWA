@@ -24,7 +24,8 @@ namespace HWA.ViewModels
             DoctorCities = new ObservableCollection<string>();
             DoctorAreas = new ObservableCollection<string>();
             DoctorPrefTimes = new ObservableCollection<string>();
-            doctorManager = new DoctorManager();
+            var programID = App.Customer.InsuranceProgramID;
+            doctorManager = new DoctorManager(programID);
             SubmitCommand = new Command(async ()=> await Sunmit());
             CancelCommand = new Command(Cancel);
         }

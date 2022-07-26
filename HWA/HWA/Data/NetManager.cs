@@ -7,11 +7,17 @@ namespace HWA.Data
 {
     public class NetManager : BaseManager
     {
+        public NetManager(string inInd)
+        {
+            InsuranceID = inInd;
+        }
+
         public async Task<IEnumerable<City>> GetAllCities()
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetAllCities&RelationParameter=Nothing&Parameters=Nothing");
+                $"{Url}GetAllCitiesSM&RelationParameter=Nothing&Parameters=" +
+                $"GetAllCitiesSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<City>>(result);
         }
@@ -19,7 +25,9 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetAllArea&RelationParameter=Nothing&Parameters=GetAllArea,@city,{city}");
+                $"{Url}GetAllAreaSM&RelationParameter=Nothing&" +
+                $"Parameters=GetAllAreaSM,@city,{city};" +
+                $"GetAllAreaSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<Area>>(result);
         }
@@ -27,7 +35,9 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetAll&RelationParameter=Nothing&Parameters=GetAll,@city,{city};GetAll,@Area,{area}");
+                $"{Url}GetAllSM&RelationParameter=Nothing&Parameters=" +
+                $"GetAllSM,@city,{city};GetAllSM,@Area,{area};" +
+                $"GetAllSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             //[{ "Caption":"ΜΠΕΡΓΕΛΕ ΧΡΙΣΤΙΝΑ","Ειδικότητα":"ΓΑΣΤΡΕΝΤΕΡΟΛΟΓΟΣ","Οδός":"ΑΙΟΛΟΥ 2"}]
             return JsonSerializer.Deserialize<IEnumerable<Doctor>>(result);

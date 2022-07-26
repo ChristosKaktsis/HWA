@@ -24,7 +24,9 @@ namespace HWA.ViewModels
             Cities = new ObservableCollection<string>();
             Areas = new ObservableCollection<string>();
             Doctors = new ObservableCollection<Doctor>();
-            netManager = new NetManager();
+
+            var programID = App.Customer.InsuranceProgramID;
+            netManager = new NetManager(programID);
             LoadCommand = new Command(async () => await LoadAll());
             CancelCommand = new Command(Cancel);
         }

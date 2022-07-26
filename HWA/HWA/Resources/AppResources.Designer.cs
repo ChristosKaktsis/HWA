@@ -61,6 +61,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to δδ.
+        /// </summary>
+        internal static string _new {
+            get {
+                return ResourceManager.GetString("new", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Διεύθυνση.
         /// </summary>
         internal static string address {
@@ -160,6 +169,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Υποβολή Απαίτησης.
+        /// </summary>
+        internal static string claimsSub {
+            get {
+                return ResourceManager.GetString("claimsSub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Κλινική.
         /// </summary>
         internal static string clinic {
@@ -250,6 +268,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Κύριο μενού.
+        /// </summary>
+        internal static string mainmenu {
+            get {
+                return ResourceManager.GetString("mainmenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Όνομα.
         /// </summary>
         internal static string name {
@@ -327,6 +354,15 @@ namespace HWA.Resources {
         internal static string preftime {
             get {
                 return ResourceManager.GetString("preftime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Προφίλ.
+        /// </summary>
+        internal static string profile {
+            get {
+                return ResourceManager.GetString("profile", resourceCulture);
             }
         }
         

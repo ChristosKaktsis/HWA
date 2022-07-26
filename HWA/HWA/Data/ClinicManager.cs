@@ -9,11 +9,17 @@ namespace HWA.Data
 {
     public class ClinicManager : BaseManager
     {
+        public ClinicManager(string inId)
+        {
+            InsuranceID = inId;
+        }
+
         public async Task<IEnumerable<City>> GetClinicCities()
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetClinicsCities&RelationParameter=Nothing&Parameters=Nothing");
+                $"{Url}GetClinicsCitiesSM&RelationParameter=Nothing&Parameters=" +
+                $"GetClinicsCitiesSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<City>>(result);
         }
@@ -21,7 +27,9 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetClinicsArea&RelationParameter=Nothing&Parameters=GetClinicsArea,@city,{city}");
+                $"{Url}GetClinicsAreaSM&RelationParameter=Nothing&Parameters=" +
+                $"GetClinicsAreaSM,@city,{city};" +
+                $"GetClinicsAreaSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<Area>>(result);
         }
@@ -29,7 +37,9 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetClinics&RelationParameter=Nothing&Parameters=GetClinics,@city,{city};GetClinics,@Area,{area}");
+                $"{Url}GetClinicsSM&RelationParameter=Nothing&Parameters=" +
+                $"GetClinicsSM,@city,{city};GetClinicsSM,@Area,{area};" +
+                $"GetClinicsSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             //[{ "Oid":"3819939b-2400-4b0f-988e-2b734f711027","Caption":"ORASIS ΑΜΠΕΛΟΚΗΠΩΝ"}]
             return JsonSerializer.Deserialize<IEnumerable<Clinic>>(result);

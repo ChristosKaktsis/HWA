@@ -22,7 +22,8 @@ namespace HWA.ViewModels
         public Command CancelCommand { get; }
         public CenterAppointmentViewModel()
         {
-            centerManager = new CenterManager();
+            var programID = App.Customer.InsuranceProgramID;
+            centerManager = new CenterManager(programID);
             Centers = new ObservableCollection<Center>();
             Cities = new ObservableCollection<string>();
             Areas = new ObservableCollection<string>();

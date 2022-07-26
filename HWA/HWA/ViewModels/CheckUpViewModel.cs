@@ -27,8 +27,7 @@ namespace HWA.ViewModels
             {
                 IsBusy = true;
                 Packages.Clear();
-                var items = await centerManager.
-                    GetAvailablePackages(App.Customer.InsuranceProgramID);
+                var items = await centerManager.GetAvailablePackages();
                 foreach (var item in items)
                     Packages.Add(item.Description);
             }

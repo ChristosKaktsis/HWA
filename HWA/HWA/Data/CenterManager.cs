@@ -10,11 +10,18 @@ namespace HWA.Data
 {
     public class CenterManager : BaseManager
     {
+        public CenterManager(string inId)
+        {
+            InsuranceID = inId;
+        }
+
         public async Task<IEnumerable<Center>> GetCenters(string city, string area)
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetCenters&RelationParameter=Nothing&Parameters=GetCenters,@city,{city};GetCenters,@Area,{area}");
+                $"{Url}GetCentersSM&RelationParameter=Nothing&Parameters=" +
+                $"GetCentersSM,@city,{city};GetCentersSM,@Area,{area};" +
+                $"GetCentersSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             //[{ "Oid":"deb336f3-a982-49ad-897d-5e466acddb83","Caption":"AFFIDEA ΕΥΡΩΙΑΤΡΙΚΗ ΒΑΡΗΣ "}]
             return JsonSerializer.Deserialize<IEnumerable<Center>>(result);
@@ -23,7 +30,8 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetCenterCities&RelationParameter=Nothing&Parameters=Nothing");
+                $"{Url}GetCenterCitiesSM&RelationParameter=Nothing&Parameters=" +
+                $"GetCenterCitiesSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<City>>(result);
         }
@@ -31,7 +39,9 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetCenterArea&RelationParameter=Nothing&Parameters=GetCenterArea,@city,{city}");
+                $"{Url}GetCenterAreaSM&RelationParameter=Nothing&Parameters=" +
+                $"GetCenterAreaSM,@city,{city};" +
+                $"GetCenterAreaSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<Area>>(result);
         }
@@ -39,7 +49,7 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetPreferredTimeForCenters&RelationParameter=Nothing&Parameters=Nothing");
+                $"{Url}GetPreferredTimeForCentersSM&RelationParameter=Nothing&Parameters=Nothing");
             result = CleanJson(result);
             //{ "PreferredTime":"9:00 - 12:00,12:00 - 15:00,15:00 - 18:00,18:00 - 21:00"}
             var preft = JsonSerializer.Deserialize<IEnumerable<PreferredTime>>(result).FirstOrDefault();
@@ -47,11 +57,12 @@ namespace HWA.Data
             IEnumerable<string> times = preft.Value.Split(',');
             return times;
         }
-        public async Task<IEnumerable<Package>> GetAvailablePackages(string ipid)
+        public async Task<IEnumerable<Package>> GetAvailablePackages()
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetAvailablePackages&RelationParameter=Nothing&Parameters=GetAvailablePackages,@InsuranceProgramID,{ipid}");
+                $"{Url}GetAvailablePackagesSM&RelationParameter=Nothing&Parameters=" +
+                $"GetAvailablePackagesSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             //[{ "Code":"CU3","Description":"CU3 - CHECK UP ΓΥΝΑΙΚΩΝ ΑΝΩ ΤΩΝ 40","PackageValue":0.0000}]
             return JsonSerializer.Deserialize<IEnumerable<Package>>(result);

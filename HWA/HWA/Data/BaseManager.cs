@@ -8,8 +8,9 @@ namespace HWA.Data
 {
     public class BaseManager
     {
-        protected static readonly string BaseAddress = "http://79.129.123.83/HwaAPI/api/";
+        protected static readonly string BaseAddress = "http://hwawebportal.com//HwaAPI/api/";
         protected static readonly string Url = $"{BaseAddress}GetDataJson?SelectMethod=";
+        protected static string InsuranceID;
 
         private string authorizationKey;
         protected async Task<HttpClient> GetClient()

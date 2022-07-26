@@ -9,10 +9,16 @@ namespace HWA.Data
 {
     public class DoctorManager : BaseManager
     {
+        public DoctorManager(string inid)
+        {
+            InsuranceID = inid;
+        }
         public async Task<IEnumerable<Doctor>> GetDoctorSpecialties()
         {
             HttpClient client = await GetClient();
-            string result = await client.GetStringAsync($"{Url}GetDoctorSpecialties&RelationParameter=Nothing&Parameters=Nothing");
+            string result = await client.GetStringAsync(
+                $"{Url}GetDoctorSpecialtiesSM&RelationParameter=Nothing&Parameters=" +
+                $"GetDoctorSpecialtiesSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<Doctor>>(result);
         }
@@ -20,7 +26,9 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetDoctorCities&RelationParameter=Nothing&Parameters=GetDoctorCities,@specialty,{specialty}");
+                $"{Url}GetDoctorCitiesSM&RelationParameter=Nothing&Parameters=" +
+                $"GetDoctorCitiesSM,@specialty,{specialty};" +
+                $"GetDoctorCitiesSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<City>>(result);
         }
@@ -28,7 +36,9 @@ namespace HWA.Data
         {
             HttpClient client = await GetClient();
             string result = await client.GetStringAsync(
-                $"{Url}GetDoctorsArea&RelationParameter=Nothing&Parameters=GetDoctorsArea,@specialty,{specialty};GetDoctorsArea,@city,{city}");
+                $"{Url}GetDoctorsAreaSM&RelationParameter=Nothing&Parameters=" +
+                $"GetDoctorsAreaSM,@specialty,{specialty};GetDoctorsAreaSM,@city,{city};" +
+                $"GetDoctorsAreaSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
             return JsonSerializer.Deserialize<IEnumerable<Area>>(result);
         }

@@ -43,6 +43,12 @@ namespace HWA.ViewModels
             MenuItems.Clear();
             foreach (string operation in operations)
                 ActivateProgram(operation);
+            MenuItems.Add(new MenuItemViewModel
+            {
+                Image = "",
+                ItemName = AppResources.claimsSub,
+                PageName = nameof(ClaimsSubPage)
+            });
         }
         private void ActivateProgram(string operation)
         {
