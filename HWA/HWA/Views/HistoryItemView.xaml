@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:data="clr-namespace:HWA.Data"
+             x:Class="HWA.Views.HistoryItemView"
+             HasShadow="False" Padding="0">
+    <Frame x:DataType="data:History" HasShadow="True" Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Label Text="{Binding ClaimDate,StringFormat='{0:dd/MM/yyyy}'}"/>
+                <Label Text="{Binding Status}"
+                       Grid.Column="1"
+                       HorizontalOptions="End"/>
+            </Grid>
+            <Label Text="{Binding AppointmentDate,StringFormat='{0:dd/MM/yyyy hh:mm}'}"
+                   Grid.Row="1"/>
+            <Label Text="{Binding Provider}"
+                   Grid.Row="2"/>
+            <Label Text="{Binding ExamGroup}"
+                   Grid.Row="3"/>
+            <Label Text="{Binding ExtraInfo}"
+                   Grid.Row="4"/>
+        </Grid>
+    </Frame>
+    
+  
+</Frame>

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,6 @@ namespace HWA.Data
             
             return JsonConvert.DeserializeObject<Customer>(result);
         }
-
         public async Task<Response> CheckCustomer(string cn, string cc, string tel, string em)
         {
             object book = new { 
@@ -32,6 +32,18 @@ namespace HWA.Data
 
             return JsonConvert.DeserializeObject<Response>(
                 await response.Content.ReadAsStringAsync());
+        }
+        public async Task<IEnumerable<History>> GetHistory(string inId, string cid, string ccode, string contractNo)
+        {
+            HttpClient client = await GetClient();
+            string result = await client.GetStringAsync(
+                $"{Url}GetHistorySM&RelationParameter=Nothing&Parameters=" +
+                $"GetHistorySM,@InsuranceProgramID,{inId};" +
+                $"GetHistorySM,@ContractNumber ,{contractNo};" +
+                $"GetHistorySM,@CustomerCode ,{ccode};" +
+                $"GetHistorySM,@CustomerOid,{cid}");
+            result = CleanJson(result);
+            return JsonConvert.DeserializeObject<IEnumerable<History>>(result);
         }
     }
 }

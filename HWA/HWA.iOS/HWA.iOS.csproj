@@ -178,4 +178,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\profile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submit.png" />
+  </ItemGroup>
 </Project>

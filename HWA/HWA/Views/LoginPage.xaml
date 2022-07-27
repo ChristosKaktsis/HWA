@@ -37,11 +37,11 @@
                     <editors:TextEdit Text="{Binding ContractNo}"
                                       LabelText="{Static resources:AppResources.contractNo}"
                                       HasError="{Binding ContracrHasError}"
-                                      Keyboard="Numeric"/>
+                                      />
                     <editors:TextEdit Text="{Binding CustomerCode}"
                                       LabelText="{Static resources:AppResources.customercode}"
                                       HasError="{Binding CodeHasError}"
-                                      Keyboard="Numeric"/>
+                                      />
                     <editors:TextEdit Text="{Binding Phone}"
                                       Keyboard="Telephone"
                                       LabelText="{Static resources:AppResources.phoneNo}"

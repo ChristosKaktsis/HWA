@@ -19,6 +19,7 @@ namespace HWA
             Routing.RegisterRoute(nameof(HospitalizationPage), typeof(HospitalizationPage));
             Routing.RegisterRoute(nameof(NetListPage), typeof(NetListPage));
             Routing.RegisterRoute(nameof(ClaimsSubPage), typeof(ClaimsSubPage));
+            Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
         }
 
     }

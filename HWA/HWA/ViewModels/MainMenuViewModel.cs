@@ -31,7 +31,7 @@ namespace HWA.ViewModels
             StopTimer = new Command(() => Panic_Warning = false);
             //PanicCommand = new Command(async () => await PanicPressed());
         }
-        public void OnAppearing() 
+        public  void OnAppearing() 
         {
             CheckUserValidOperations();
         }
@@ -45,9 +45,15 @@ namespace HWA.ViewModels
                 ActivateProgram(operation);
             MenuItems.Add(new MenuItemViewModel
             {
-                Image = "",
+                Image = "submit.png",
                 ItemName = AppResources.claimsSub,
                 PageName = nameof(ClaimsSubPage)
+            });
+            MenuItems.Add(new MenuItemViewModel
+            {
+                Image = "history.png",
+                ItemName = AppResources.history,
+                PageName = nameof(HistoryPage)
             });
         }
         private void ActivateProgram(string operation)

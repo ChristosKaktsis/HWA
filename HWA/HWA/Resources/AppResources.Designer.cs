@@ -61,7 +61,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to δδ.
+        ///   Looks up a localized string similar to dd.
         /// </summary>
         internal static string _new {
             get {
@@ -70,7 +70,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Διεύθυνση.
+        ///   Looks up a localized string similar to Address.
         /// </summary>
         internal static string address {
             get {
@@ -79,7 +79,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Το ραντεβού σας έχει σταλεί.
+        ///   Looks up a localized string similar to Your request has been send.
         /// </summary>
         internal static string appoinment_result {
             get {
@@ -88,7 +88,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Κάτι πήγε στραβά. Η φόρμα δεν στάλθηκε.
+        ///   Looks up a localized string similar to Something went wrong. The form was not sent.
         /// </summary>
         internal static string appoinment_result_error {
             get {
@@ -97,7 +97,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Περιοχή.
+        ///   Looks up a localized string similar to Region.
         /// </summary>
         internal static string area {
             get {
@@ -106,7 +106,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Άκυρο.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string cancel {
             get {
@@ -115,7 +115,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Διαγνωστικό Κέντρο.
+        ///   Looks up a localized string similar to Diagnostic Center.
         /// </summary>
         internal static string center {
             get {
@@ -124,7 +124,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ραντεβού σε Διαγνωστικό Κέντρο.
+        ///   Looks up a localized string similar to Appointment at a Diagnostic Center.
         /// </summary>
         internal static string centerappointment {
             get {
@@ -142,7 +142,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Επιλέξτε.
+        ///   Looks up a localized string similar to Choose.
         /// </summary>
         internal static string choose {
             get {
@@ -151,7 +151,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Επιλογή αρχείου.
+        ///   Looks up a localized string similar to Choose file.
         /// </summary>
         internal static string choosefile {
             get {
@@ -160,7 +160,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Πόλη.
+        ///   Looks up a localized string similar to City.
         /// </summary>
         internal static string city {
             get {
@@ -169,7 +169,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Υποβολή Απαίτησης.
+        ///   Looks up a localized string similar to Claim Submission.
         /// </summary>
         internal static string claimsSub {
             get {
@@ -178,7 +178,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Κλινική.
+        ///   Looks up a localized string similar to Clinic.
         /// </summary>
         internal static string clinic {
             get {
@@ -187,7 +187,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Αριθμός Συμβολαίου.
+        ///   Looks up a localized string similar to Contract number.
         /// </summary>
         internal static string contractNo {
             get {
@@ -196,7 +196,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Κωδικός πελάτη.
+        ///   Looks up a localized string similar to Customer&apos;s code.
         /// </summary>
         internal static string customercode {
             get {
@@ -205,7 +205,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ημερομηνία.
+        ///   Looks up a localized string similar to Date.
         /// </summary>
         internal static string date {
             get {
@@ -214,7 +214,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ραντεβού με γιατρό.
+        ///   Looks up a localized string similar to Appointment with a doctor.
         /// </summary>
         internal static string docappointment {
             get {
@@ -232,7 +232,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Είσοδος.
+        ///   Looks up a localized string similar to Entrance.
         /// </summary>
         internal static string entry {
             get {
@@ -241,7 +241,16 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Αναγγελία νοσηλείας.
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        internal static string history {
+            get {
+                return ResourceManager.GetString("history", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hospitalization Announcement.
         /// </summary>
         internal static string hospitalization {
             get {
@@ -250,7 +259,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Σύνδεση.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string login {
             get {
@@ -259,7 +268,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Αποσύνδεση.
+        ///   Looks up a localized string similar to Logoff.
         /// </summary>
         internal static string logoff {
             get {
@@ -268,7 +277,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Κύριο μενού.
+        ///   Looks up a localized string similar to Main menu.
         /// </summary>
         internal static string mainmenu {
             get {
@@ -277,7 +286,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Όνομα.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string name {
             get {
@@ -286,7 +295,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Λίστα Δικτύου.
+        ///   Looks up a localized string similar to Network List.
         /// </summary>
         internal static string netlist {
             get {
@@ -295,7 +304,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Εναλλακτική ημερομηνία.
+        ///   Looks up a localized string similar to Alternative date.
         /// </summary>
         internal static string otherdate {
             get {
@@ -304,7 +313,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Πακέτο Κάλυψης.
+        ///   Looks up a localized string similar to Coverage package.
         /// </summary>
         internal static string package {
             get {
@@ -313,7 +322,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Επείγον περιστατικό.
+        ///   Looks up a localized string similar to Emergency.
         /// </summary>
         internal static string panicbtn {
             get {
@@ -322,7 +331,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Έχετε πατήσει το κουμπί πανικού. Το σήμα θα σταλεί σε.
+        ///   Looks up a localized string similar to You have pressed the panic button. Signal will be send in.
         /// </summary>
         internal static string panicwarning {
             get {
@@ -331,7 +340,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Τηλέφωνο.
+        ///   Looks up a localized string similar to Phone.
         /// </summary>
         internal static string phoneNo {
             get {
@@ -340,7 +349,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Φωτογραφία.
+        ///   Looks up a localized string similar to Take Photo.
         /// </summary>
         internal static string photo {
             get {
@@ -349,7 +358,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Προτιμώμενη ώρα.
+        ///   Looks up a localized string similar to Preferred time.
         /// </summary>
         internal static string preftime {
             get {
@@ -358,7 +367,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Προφίλ.
+        ///   Looks up a localized string similar to Profile.
         /// </summary>
         internal static string profile {
             get {
@@ -367,7 +376,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Αναζήτηση.
+        ///   Looks up a localized string similar to search.
         /// </summary>
         internal static string search {
             get {
@@ -376,7 +385,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ειδικότητα.
+        ///   Looks up a localized string similar to Specialty.
         /// </summary>
         internal static string specialty {
             get {
@@ -385,7 +394,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Υποβολή.
+        ///   Looks up a localized string similar to Submit.
         /// </summary>
         internal static string submit {
             get {

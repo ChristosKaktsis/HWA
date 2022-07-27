@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:HWA.ViewModels" 
+             xmlns:resources="clr-namespace:HWA.Resources" 
+             xmlns:views="clr-namespace:HWA.Views"
+             x:Class="HWA.Views.HistoryPage"
+             Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="history_template">
+                <views:HistoryItemView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout x:DataType="vm:HistoryViewModel" Margin="10">
+            <Label Text="{Static resources:AppResources.history}"
+                   FontSize="20"/>
+            <BoxView HeightRequest="1" Color="Gray"/>
+            <CollectionView ItemTemplate="{StaticResource history_template}"
+                            ItemsSource="{Binding HistoryCollection}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
