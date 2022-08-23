@@ -32,6 +32,7 @@ namespace HWA.ViewModels
             var itemToDelete = ChoosenFiles.Where(x => x.FileName == itemName).FirstOrDefault();
             ChoosenFiles.Remove(itemToDelete);
         }
+        public string ClaimName { get; set; }
         private async Task Submit()
         {
             try
@@ -39,7 +40,7 @@ namespace HWA.ViewModels
                 IsBusy = true;
                 var cid = App.Customer.ID;
                 var result = await submissionManager.Submit(
-                    cid.ToString(),ChoosenFiles.ToList());
+                    cid.ToString(),ClaimName,ChoosenFiles.ToList());
                 Cancel();
                 await ToastUser(result.IsSuccessful, AppResources.appoinment_result, AppResources.appoinment_result_error);
             }

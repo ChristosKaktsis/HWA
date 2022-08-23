@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace HWA.Data
 {
@@ -23,5 +24,23 @@ namespace HWA.Data
         public string Provider { get; set; }
         public string ExamGroup { get; set; }
         public string ExtraInfo { get; set; }
+        public int ColorIndex { get; set; }
+        public Color Color 
+        {
+            get
+            {
+                return StatusColor(ColorIndex);
+            } 
+        }
+        private Color StatusColor(int index)
+        {
+            Color color = Color.White;
+            if (index == 0) color = Color.FromHex("#B9F6CA");
+            if (index == 1) color = Color.FromHex("#FF8A80");
+            if (index == 2) color = Color.FromHex("#FF9800");
+            if (index == 3) color = Color.FromHex("#BDBDBD");
+            if (index == 4) color = Color.FromHex("#FFEE58");
+            return color;
+        }
     }
 }

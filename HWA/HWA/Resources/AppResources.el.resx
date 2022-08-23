@@ -120,6 +120,9 @@
   <data name="address" xml:space="preserve">
     <value>Διεύθυνση</value>
   </data>
+  <data name="applicant" xml:space="preserve">
+    <value>Όνομα αιτούντος</value>
+  </data>
   <data name="appoinment_result" xml:space="preserve">
     <value>Η αίτηση σας έχει σταλεί</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="clinic" xml:space="preserve">
     <value>Κλινική</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Κλείσιμο</value>
   </data>
   <data name="contractNo" xml:space="preserve">
     <value>Αριθμός Συμβολαίου</value>

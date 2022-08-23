@@ -79,6 +79,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Claimant Name.
+        /// </summary>
+        internal static string applicant {
+            get {
+                return ResourceManager.GetString("applicant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your request has been send.
         /// </summary>
         internal static string appoinment_result {
@@ -183,6 +192,15 @@ namespace HWA.Resources {
         internal static string clinic {
             get {
                 return ResourceManager.GetString("clinic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string close {
+            get {
+                return ResourceManager.GetString("close", resourceCulture);
             }
         }
         

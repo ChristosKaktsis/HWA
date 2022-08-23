@@ -10,11 +10,12 @@ namespace HWA.Data
 {
     public class ClaimSubmissionManager : BaseManager
     {
-        public async Task<Response> Submit(string cid, List<FileResult> files)
+        public async Task<Response> Submit(string cid, string name, List<FileResult> files)
         {
             object claims = new
             {
                 CustomerOid = cid,
+                ClaimantName = name,
             };
             HttpClient client = await GetClient();
             var content = new MultipartFormDataContent

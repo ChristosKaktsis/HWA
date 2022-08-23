@@ -64,7 +64,7 @@ namespace HWA.Data
                 $"{Url}GetAvailablePackagesSM&RelationParameter=Nothing&Parameters=" +
                 $"GetAvailablePackagesSM,@InsuranceProgramID,{InsuranceID}");
             result = CleanJson(result);
-            //[{ "Code":"CU3","Description":"CU3 - CHECK UP ΓΥΝΑΙΚΩΝ ΑΝΩ ΤΩΝ 40","PackageValue":0.0000}]
+            //[{ "Code":"CU3","Description":"CU3 - CHECK UP ΓΥΝΑΙΚΩΝ ΑΝΩ ΤΩΝ 40","PackageValue":0.0000,"Comments":smthn}]
             return JsonSerializer.Deserialize<IEnumerable<Package>>(result);
         }
         public async Task<Response> SubmitAppointment(string cid, string centerid,

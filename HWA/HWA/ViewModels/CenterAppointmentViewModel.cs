@@ -22,7 +22,7 @@ namespace HWA.ViewModels
         public Command CancelCommand { get; }
         public CenterAppointmentViewModel()
         {
-            var programID = App.Customer.InsuranceProgramID;
+            var programID = App.Customer == null ? string.Empty : App.Customer.InsuranceProgramID;
             centerManager = new CenterManager(programID);
             Centers = new ObservableCollection<Center>();
             Cities = new ObservableCollection<string>();
@@ -30,6 +30,7 @@ namespace HWA.ViewModels
             PrefTimes = new ObservableCollection<string>();
             SubmitCommand = new Command(async () => await Sunmit());
             CancelCommand = new Command(Cancel);
+            CurrentDate = DateTime.Now.AddDays(1);
         }
 
         public virtual async void OnAppearing()

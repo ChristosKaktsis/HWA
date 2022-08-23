@@ -120,6 +120,9 @@
   <data name="address" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="applicant" xml:space="preserve">
+    <value>Claimant Name</value>
+  </data>
   <data name="appoinment_result" xml:space="preserve">
     <value>Your request has been send</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="clinic" xml:space="preserve">
     <value>Clinic</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Close</value>
   </data>
   <data name="contractNo" xml:space="preserve">
     <value>Contract number</value>

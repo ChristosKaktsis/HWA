@@ -43,18 +43,8 @@ namespace HWA.ViewModels
             MenuItems.Clear();
             foreach (string operation in operations)
                 ActivateProgram(operation);
-            MenuItems.Add(new MenuItemViewModel
-            {
-                Image = "submit.png",
-                ItemName = AppResources.claimsSub,
-                PageName = nameof(ClaimsSubPage)
-            });
-            MenuItems.Add(new MenuItemViewModel
-            {
-                Image = "history.png",
-                ItemName = AppResources.history,
-                PageName = nameof(HistoryPage)
-            });
+            
+            
         }
         private void ActivateProgram(string operation)
         {
@@ -99,14 +89,32 @@ namespace HWA.ViewModels
                     });
                     Console.WriteLine("hosp");
                     break;
-                case "5":
-                    MenuItems.Add(new MenuItemViewModel 
-                    { 
-                        Image = "search.png", 
-                        ItemName = AppResources.netlist,
-                        PageName = nameof(NetListPage)
+                //case "5":
+                //    MenuItems.Add(new MenuItemViewModel 
+                //    { 
+                //        Image = "search.png", 
+                //        ItemName = AppResources.netlist,
+                //        PageName = nameof(NetListPage)
+                //    });
+                //    Console.WriteLine("search");
+                //    break;
+                case "6":
+                    MenuItems.Add(new MenuItemViewModel
+                    {
+                        Image = "submit.png",
+                        ItemName = AppResources.claimsSub,
+                        PageName = nameof(ClaimsSubPage)
                     });
                     Console.WriteLine("claims");
+                    break;
+                case "7":
+                    MenuItems.Add(new MenuItemViewModel
+                    {
+                        Image = "history.png",
+                        ItemName = AppResources.history,
+                        PageName = nameof(HistoryPage)
+                    });
+                    Console.WriteLine("history");
                     break;
             }
         }

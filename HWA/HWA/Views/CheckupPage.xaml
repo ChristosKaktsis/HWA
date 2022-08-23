@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resources="clr-namespace:HWA.Resources" 
+             xmlns:dxp="http://schemas.devexpress.com/xamarin/2014/forms/popup"
              xmlns:editors="http://schemas.devexpress.com/xamarin/2014/forms/editors" 
              xmlns:vm="clr-namespace:HWA.ViewModels"
              x:Class="HWA.Views.CheckupPage" 
@@ -32,9 +33,18 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="{Static resources:AppResources.package}"/>
-                <editors:ComboBoxEdit x:Name="package_edit"
-                                      ItemsSource="{Binding Packages}"
-                                      SelectedItem="{Binding SelectedPackage,Mode=OneWayToSource}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <editors:ComboBoxEdit x:Name="package_edit"
+                                          DisplayMember="Description"
+                                          ItemsSource="{Binding Packages}"
+                                          SelectedItem="{Binding SelectedPackage,Mode=OneWayToSource}"/>
+                    <Button Grid.Column="1" 
+                            ImageSource="icon_about.png"
+                            Command="{Binding OpenInfoCommand}"/>
+                </Grid>
             </StackLayout>
             <StackLayout>
                 <Label Text="{Static resources:AppResources.date}"/>
@@ -65,6 +75,21 @@
                         Grid.Column="0"/>
                 <ActivityIndicator IsRunning="{Binding IsBusy}"
                                    Grid.Column="1"/>
+                <dxp:DXPopup IsOpen="{Binding ShowPackage}"
+                         AllowScrim="True"
+                         CornerRadius="5">
+                    <Frame CornerRadius="5"
+                       WidthRequest="300">
+                        <StackLayout>
+                            <ScrollView>
+                                <Label Text="{Binding PackageInfo}"
+                                   FontSize="17"/>
+                            </ScrollView>
+                            <Button Text="{Static resources:AppResources.close}"
+                                    Command="{Binding OpenInfoCommand}"/>
+                        </StackLayout>
+                    </Frame>
+                </dxp:DXPopup>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
