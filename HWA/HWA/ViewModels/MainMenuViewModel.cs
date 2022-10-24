@@ -39,7 +39,8 @@ namespace HWA.ViewModels
         {
             if (App.Customer == null)
                 return;
-            string[] operations = App.Customer.InsuranceProgramValidOperations.Split(',');
+            //string[] operations = App.Customer.InsuranceProgramValidOperations.Split(',');
+            string[] operations =new string[] { "0", "1", "2", "3", "4", "5", "6", "7" };
             MenuItems.Clear();
             foreach (string operation in operations)
                 ActivateProgram(operation);

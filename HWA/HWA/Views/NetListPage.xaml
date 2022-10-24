@@ -6,6 +6,16 @@
              xmlns:local="clr-namespace:HWA.Views"
              x:Class="HWA.Views.NetListPage"
              Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0, 30, 0, 0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0, 0, 0, 0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.Padding>
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="docTemplate">

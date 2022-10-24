@@ -5,7 +5,8 @@
              xmlns:local="clr-namespace:HWA.Views" 
              xmlns:resources="clr-namespace:HWA.Resources"
              xmlns:vm="clr-namespace:HWA.ViewModels"
-             x:Class="HWA.Views.MainMenu">
+             x:Class="HWA.Views.MainMenu"
+             Shell.NavBarIsVisible="false">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="main">
