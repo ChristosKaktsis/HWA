@@ -11,7 +11,8 @@ namespace HWA
     {
         public static Customer Customer { get; set; }
         CustomerManager customerManager = new CustomerManager();
-
+        public static SignalRService Service { get; set; }
+        public static Models.User CurrentConnectedUser { get; set; } = new Models.User { Name = "John the hard coded" };
         public App()
         {
             DevExpress.XamarinForms.Editors.Initializer.Init();
@@ -19,8 +20,6 @@ namespace HWA
             DevExpress.XamarinForms.Popup.Initializer.Init();
             Thread.CurrentThread.CurrentUICulture = CultureInfo.InstalledUICulture;
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

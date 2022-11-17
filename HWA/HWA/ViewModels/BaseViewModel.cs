@@ -1,6 +1,5 @@
 ﻿using HWA.Models;
 using HWA.Resources;
-using HWA.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +12,6 @@ namespace HWA.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
         bool isBusy = false;
         bool lockButton = true;
         public bool IsBusy

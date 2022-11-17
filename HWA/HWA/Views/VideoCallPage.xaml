@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:views="clr-namespace:HWA.Views"
+             x:Class="HWA.Views.VideoCallPage"
+             Shell.PresentationMode="ModalNotAnimated">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="action_circle_frame">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="CornerRadius" Value="35"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="WidthRequest" Value="70"/>
+            </Style>
+            <Style TargetType="ImageButton">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <views:GenericWebView x:Name="CallWebView" VerticalOptions="FillAndExpand" 
+                 HorizontalOptions="FillAndExpand"/>
+        <Frame 
+                   Style="{StaticResource action_circle_frame}"
+                   BackgroundColor="Red">
+            <ImageButton x:Name="reject_btn" 
+                             Source="call_end.png"
+                         Clicked="reject_btn_Clicked"/>
+        </Frame>
+    </Grid>
+</ContentPage>

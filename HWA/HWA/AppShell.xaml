@@ -35,6 +35,7 @@
     <TabBar>
         <ShellContent Title="Menu" Icon="mainmenu.png" Route="MainMenu" ContentTemplate="{DataTemplate local:MainMenu}" />
         <ShellContent Title="Profile" Icon="profile.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        <ShellContent Title="Products" Icon="profile.png" ContentTemplate="{DataTemplate local:ProductPage}" />
         <!--<ShellContent Title="About" Icon="icon_about.png"  ContentTemplate="{DataTemplate local:AboutPage}" />
         <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />-->
     </TabBar>

@@ -6,10 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.XamarinForms.CollectionView" Version="22.1.5" />
-    <PackageReference Include="DevExpress.XamarinForms.Editors" Version="22.1.5" />
+    <PackageReference Include="DevExpress.XamarinForms.CollectionView" Version="22.1.6" />
+    <PackageReference Include="DevExpress.XamarinForms.Editors" Version="22.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.Text.Json" Version="6.0.6" />
+    <PackageReference Include="System.Text.Json" Version="7.0.0" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
@@ -35,13 +36,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Templates\ProductTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\UserTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\CenterAppointmentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CheckoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CheckupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ClaimsSubPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CommunicationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DoctorAppointmentPage.xaml">
@@ -59,6 +72,9 @@
     <EmbeddedResource Update="Views\HospitalizationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\IncommingCallPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\MainMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -68,7 +84,13 @@
     <EmbeddedResource Update="Views\NetListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProductPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\VideoCallPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

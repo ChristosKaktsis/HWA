@@ -24,14 +24,16 @@
             <BoxView HeightRequest="1" Color="Gray"/>-->
             <editors:TextEdit Text="{Binding ClaimName}"
                                       LabelText="{Static resources:AppResources.applicant}"/>
-            <StackLayout Orientation="Horizontal">
+            <Grid>
                 <Button x:Name="pick_button" 
                         Clicked="pick_button_Clicked"
+                        Grid.Column="0"
                         Text="{Static resources:AppResources.choosefile}"/>
-                <Button x:Name="photo_button" 
+                <Button x:Name="photo_button"
+                        Grid.Column="1"
                         Text="{Static resources:AppResources.photo}" 
                         Clicked="photo_button_Clicked"/>
-            </StackLayout>
+            </Grid>
             <Label x:Name="LabelInfo"/>
 
             <editors:FilterChipGroup x:Name="Chip_Collection"

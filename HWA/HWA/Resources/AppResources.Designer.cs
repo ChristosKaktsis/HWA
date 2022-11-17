@@ -19,7 +19,7 @@ namespace HWA.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
@@ -115,6 +115,24 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Call.
+        /// </summary>
+        internal static string call {
+            get {
+                return ResourceManager.GetString("call", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Call rejected.
+        /// </summary>
+        internal static string call_rejected {
+            get {
+                return ResourceManager.GetString("call_rejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string cancel {
@@ -201,6 +219,15 @@ namespace HWA.Resources {
         internal static string close {
             get {
                 return ResourceManager.GetString("close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Communication.
+        /// </summary>
+        internal static string communication {
+            get {
+                return ResourceManager.GetString("communication", resourceCulture);
             }
         }
         
@@ -399,6 +426,15 @@ namespace HWA.Resources {
         internal static string search {
             get {
                 return ResourceManager.GetString("search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        internal static string services {
+            get {
+                return ResourceManager.GetString("services", resourceCulture);
             }
         }
         

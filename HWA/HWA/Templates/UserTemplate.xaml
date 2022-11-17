@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:model="clr-namespace:HWA.Models"
+       x:Class="HWA.Templates.UserTemplate" Padding="0">
+    <Grid.Style>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="LightSkyBlue" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </Grid.Style>
+    <Frame CornerRadius="10" Margin="5" Padding="10"
+           x:DataType="model:User" BackgroundColor="{StaticResource Background}">
+        <StackLayout Orientation="Horizontal">
+            <Frame BackgroundColor="{Binding Color}"
+                   CornerRadius="30" HeightRequest="5" WidthRequest="5"/>
+            <Label Text="{Binding Name}" 
+               FontSize="20" VerticalOptions="Center"/>
+        </StackLayout>
+       
+
+    </Frame>
+</Grid>

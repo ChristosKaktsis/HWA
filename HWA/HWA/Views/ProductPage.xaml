@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:templates="clr-namespace:HWA.Templates" 
+             xmlns:vm="clr-namespace:HWA.ViewModels"
+             xmlns:resources="clr-namespace:HWA.Resources"
+             x:Class="HWA.Views.ProductPage"
+             Title="{Static resources:AppResources.services}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="product_template">
+                <templates:ProductTemplate/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:DataType="vm:ProductPageViewModel">
+            <CollectionView x:Name="product_collectionView" 
+                            ItemTemplate="{StaticResource product_template}"
+                            ItemsSource="{Binding ProductCollection}"
+                            SelectionMode="Single"
+                            SelectionChangedCommand="{Binding GoToCheckoutCommand}"
+                            SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference product_collectionView}}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

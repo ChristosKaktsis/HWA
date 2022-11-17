@@ -132,6 +132,12 @@
   <data name="area" xml:space="preserve">
     <value>Region</value>
   </data>
+  <data name="call" xml:space="preserve">
+    <value>Call</value>
+  </data>
+  <data name="call_rejected" xml:space="preserve">
+    <value>Call rejected</value>
+  </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="close" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="communication" xml:space="preserve">
+    <value>Communication</value>
   </data>
   <data name="contractNo" xml:space="preserve">
     <value>Contract number</value>
@@ -230,6 +239,9 @@
   </data>
   <data name="search" xml:space="preserve">
     <value>search</value>
+  </data>
+  <data name="services" xml:space="preserve">
+    <value>Services</value>
   </data>
   <data name="specialty" xml:space="preserve">
     <value>Specialty</value>

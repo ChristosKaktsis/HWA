@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HWA.Views.IncommingCallPage"
+             Shell.PresentationMode="Modal">
+    <ContentPage.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="{StaticResource Primary}"
+                          Offset="0.1" />
+            <GradientStop Color="{StaticResource Triadic}"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="action_circle_frame">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="CornerRadius" Value="35"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="WidthRequest" Value="70"/>
+            </Style>
+            <Style TargetType="ImageButton">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Spacing="20"
+                             VerticalOptions="Center">
+            <Frame CornerRadius="50"
+                   HeightRequest="100" WidthRequest="100"
+                   BackgroundColor="Transparent">
+                <Image Source="person.png"/>
+            </Frame>
+            <Label x:Name="user_label" 
+                   Text="User calling..." TextColor="White"
+                   FontSize="20"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Style="{StaticResource action_circle_frame}" 
+                   BackgroundColor="Green">
+                <ImageButton x:Name="accept_btn" 
+                             Source="call.png"
+                             Clicked="accept_btn_Clicked"/>
+            </Frame>
+            <Frame Grid.Column="1"
+                   Style="{StaticResource action_circle_frame}"
+                   BackgroundColor="Red">
+                <ImageButton x:Name="reject_btn" 
+                             Source="call_end.png"
+                             Clicked="reject_btn_Clicked"/>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -14,7 +14,7 @@
     <AssemblyName>HWA.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,11 +60,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Distribution: EXELIXIS SOFTWARE P.C. (NHB5CR43D3)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     <OptimizePNGs>true</OptimizePNGs>
+    <CodesignProvision>Chris</CodesignProvision>
+    <BuildIpa>false</BuildIpa>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -131,16 +136,22 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\icon_about.png" />
+    <BundleResource Include="Resources\icon_about.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
     <BundleResource Include="Resources\icon_about%402x.png" />
     <BundleResource Include="Resources\icon_about%403x.png" />
-    <BundleResource Include="Resources\icon_feed.png" />
+    <BundleResource Include="Resources\icon_feed.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
     <BundleResource Include="Resources\icon_feed%402x.png" />
     <BundleResource Include="Resources\icon_feed%403x.png" />
     <BundleResource Include="Resources\xamarin_logo.png" />
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -152,10 +163,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.XamarinForms.CollectionView">
-      <Version>22.1.5</Version>
+      <Version>22.1.6</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.XamarinForms.Editors">
-      <Version>22.1.5</Version>
+      <Version>22.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
+      <Version>7.0.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.CommunityToolkit">
       <Version>2.0.5</Version>
@@ -171,48 +185,96 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\doc.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\healthgraph.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\healthbook.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\schedule.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\hospital.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\mainmenu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\profile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\history.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\submit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_launch.png">
+    <BundleResource Include="Resources\doc.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\logoWhite.png">
+    <BundleResource Include="Resources\healthgraph.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\healthbook.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\schedule.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hospital.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logout.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mainmenu.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\history.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submit.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_launch.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoWhite.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoBlue.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\communication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\call.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\call_end.png" />
   </ItemGroup>
 </Project>

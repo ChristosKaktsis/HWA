@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:template="clr-namespace:HWA.Templates" xmlns:vm="clr-namespace:HWA.ViewModels" 
+             xmlns:collectionview="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
+             x:Class="HWA.Views.CommunicationPage"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="user_template">
+                <template:UserTemplate/>
+            </DataTemplate>
+            <Style TargetType="Frame" x:Key="action_circle_frame">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="CornerRadius" Value="35"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="WidthRequest" Value="70"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="Margin" Value="15"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid x:DataType="vm:CommunicationViewModel">
+            <CollectionView ItemTemplate="{StaticResource user_template}"
+                            ItemsSource="{Binding users,Mode=OneWay}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding User}"/>
+            <Frame Style="{StaticResource action_circle_frame}" 
+                   BackgroundColor="{StaticResource Analogous}">
+            <Grid>
+                <Image Source="call.png"/>
+                <Button Style="{StaticResource trans_button}"
+                        Command="{Binding CallCommand}"/>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>

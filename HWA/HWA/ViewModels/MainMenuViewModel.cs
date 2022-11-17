@@ -1,9 +1,13 @@
 ﻿using HWA.Data;
+using HWA.Models;
 using HWA.Resources;
+using HWA.Services;
 using HWA.Views;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -16,6 +20,7 @@ namespace HWA.ViewModels
         public ObservableCollection<MenuItemViewModel> MenuItems { get; set; }
         public Command PanicCommand { get; }
         public Command StopTimer { get; }
+        public List<User> Users { get; set; } = new List<User>();
         public MainMenuViewModel()
         {
             //MenuItems = new ObservableCollection<MenuItemViewModel>()
@@ -30,7 +35,11 @@ namespace HWA.ViewModels
             PanicCommand = new Command(async () =>await CountdownToPanic());
             StopTimer = new Command(() => Panic_Warning = false);
             //PanicCommand = new Command(async () => await PanicPressed());
+            App.Service = new SignalRService(Connection.Url);
+            InitializeConnection();
+            AskPermissions();
         }
+
         public  void OnAppearing() 
         {
             CheckUserValidOperations();
@@ -39,13 +48,13 @@ namespace HWA.ViewModels
         {
             if (App.Customer == null)
                 return;
-            //string[] operations = App.Customer.InsuranceProgramValidOperations.Split(',');
-            string[] operations =new string[] { "0", "1", "2", "3", "4", "5", "6", "7" };
+            string[] operations = App.Customer.InsuranceProgramValidOperations.Split(',');
+            //string[] operations =new string[] { "0", "1", "2", "3", "4", "5", "6", "7" };
             MenuItems.Clear();
             foreach (string operation in operations)
                 ActivateProgram(operation);
-            
-            
+
+            ActivateProgram("communication");
         }
         private void ActivateProgram(string operation)
         {
@@ -117,6 +126,14 @@ namespace HWA.ViewModels
                     });
                     Console.WriteLine("history");
                     break;
+                case "communication":
+                    MenuItems.Add(new MenuItemViewModel
+                    {
+                        Image = "communication.png",
+                        ItemName = AppResources.communication,
+                        PageName = nameof(CommunicationPage)
+                    });
+                    break;
             }
         }
         private bool panicIsVisible ;
@@ -126,20 +143,17 @@ namespace HWA.ViewModels
             set { SetProperty(ref panicIsVisible, value); }
         }
         private bool panic_Warning;
-
         public bool Panic_Warning
         {
             get { return panic_Warning; }
             set { SetProperty(ref panic_Warning, value); }
         }
         private string timerInfo;
-
         public string TimerInfo
         {
             get { return timerInfo; }
             set { SetProperty(ref timerInfo,value); }
         }
-
         private async Task PanicPressed()
         {
             PanicButton panicButton = new PanicButton();
@@ -222,6 +236,107 @@ namespace HWA.ViewModels
             //start operation
             Console.WriteLine("PANIC!!!");
             await PanicPressed();
+        }
+        private async void InitializeConnection()
+        {
+            if (App.Service.IsConnected)
+                return;
+            try
+            {
+                App.Service.ReceiveId(GetCurrentUserID);
+                App.Service.ReceiveConnectedUsers(GetUsers);
+                App.Service.ReceiveDisconnectedUser(RemoveUser);
+                App.Service.ReceiveCall(GetCall);
+                App.Service.OnAcceptCall(Accepted);
+                App.Service.OnRejectCall(Rejected);
+                App.Service.OnEndCall(CallEnded);
+
+                await App.Service.ConnectToHub();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+        private void GetCurrentUserID(string id)
+        {
+            App.CurrentConnectedUser.ID = id;
+        }
+        private void GetUsers(User user)
+        {
+            if (Users.Where(u => u.ID == user.ID).Any()) return;
+            if (user.ID == App.CurrentConnectedUser.ID) return;
+            Users.Add(new User { ID = user.ID, Name = user.Name });
+        }
+        private void RemoveUser(string id)
+        {
+            if (!Users.Where(u => u.ID == id).Any())
+                return;
+            Users.Remove(Users.Where(u => u.ID == id).FirstOrDefault());
+        }
+        private void GetCall(string call)
+        {
+            var finduser = Users.Where(u => u.ID == call).FirstOrDefault();
+            if (finduser is null) return;
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.Navigation.PushAsync(new IncommingCallPage(finduser));
+            });
+        }
+        private void Accepted(string id)
+        {
+            var finduser = Users.Where(u => u.ID == id).FirstOrDefault();
+            if (finduser is null) return;
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.Navigation.PushAsync(new VideoCallPage(App.CurrentConnectedUser.ID, finduser.ID));
+            });
+        }
+        private void Rejected()
+        {
+            try 
+            {
+                Console.WriteLine("Call rejected");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            //messages.Add("Call rejected");
+        }
+        private void CallEnded()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.Navigation.PopAsync();
+            });
+        }
+        private async void AskPermissions()
+        {
+            try
+            {
+                var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
+                if (status != PermissionStatus.Granted)
+                {
+                    var response = await Permissions.RequestAsync<Permissions.Camera>();
+                    if (response != PermissionStatus.Granted)
+                    {
+                    }
+                }
+
+                var statusMic = await Permissions.CheckStatusAsync<Permissions.Microphone>();
+                if (statusMic != PermissionStatus.Granted)
+                {
+                    var response = await Permissions.RequestAsync<Permissions.Microphone>();
+                    if (response != PermissionStatus.Granted)
+                    {
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }

@@ -132,6 +132,12 @@
   <data name="area" xml:space="preserve">
     <value>Περιοχή</value>
   </data>
+  <data name="call" xml:space="preserve">
+    <value>Κλήση</value>
+  </data>
+  <data name="call_rejected" xml:space="preserve">
+    <value>η κλήση απορρίφθηκε</value>
+  </data>
   <data name="cancel" xml:space="preserve">
     <value>Άκυρο</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="close" xml:space="preserve">
     <value>Κλείσιμο</value>
+  </data>
+  <data name="communication" xml:space="preserve">
+    <value>Επικοινωνία</value>
   </data>
   <data name="contractNo" xml:space="preserve">
     <value>Αριθμός Συμβολαίου</value>
@@ -230,6 +239,9 @@
   </data>
   <data name="search" xml:space="preserve">
     <value>Αναζήτηση</value>
+  </data>
+  <data name="services" xml:space="preserve">
+    <value>Υπηρεσίες</value>
   </data>
   <data name="specialty" xml:space="preserve">
     <value>Ειδικότητα</value>

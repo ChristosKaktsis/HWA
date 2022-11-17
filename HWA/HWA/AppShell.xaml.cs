@@ -11,8 +11,6 @@ namespace HWA
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(DoctorAppointmentPage), typeof(DoctorAppointmentPage));
             Routing.RegisterRoute(nameof(CenterAppointmentPage), typeof(CenterAppointmentPage));
             Routing.RegisterRoute(nameof(CheckupPage), typeof(CheckupPage));
@@ -20,6 +18,7 @@ namespace HWA
             Routing.RegisterRoute(nameof(NetListPage), typeof(NetListPage));
             Routing.RegisterRoute(nameof(ClaimsSubPage), typeof(ClaimsSubPage));
             Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
+            Routing.RegisterRoute(nameof(CommunicationPage), typeof(CommunicationPage));
         }
 
     }

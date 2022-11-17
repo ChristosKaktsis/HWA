@@ -8,6 +8,16 @@
              mc:Ignorable="d"
              x:Class="HWA.Views.LoginPage"
              Shell.NavBarIsVisible="False">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0, 30, 0, 0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0, 0, 0, 0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.Padding>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="editors:TextEdit">
