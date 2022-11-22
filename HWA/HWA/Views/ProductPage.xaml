@@ -19,7 +19,7 @@
                             ItemTemplate="{StaticResource product_template}"
                             ItemsSource="{Binding ProductCollection}"
                             SelectionMode="Single"
-                            SelectionChangedCommand="{Binding GoToCheckoutCommand}"
+                            SelectionChangedCommand="{Binding GoToDetailCommand}"
                             SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference product_collectionView}}"/>
         </Grid>
     </ContentPage.Content>

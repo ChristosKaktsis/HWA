@@ -36,25 +36,35 @@ namespace HWA.ViewModels
             StopTimer = new Command(() => Panic_Warning = false);
             //PanicCommand = new Command(async () => await PanicPressed());
             App.Service = new SignalRService(Connection.Url);
-            InitializeConnection();
             AskPermissions();
         }
 
         public  void OnAppearing() 
         {
             CheckUserValidOperations();
+            InitializeConnection();
         }
         private void CheckUserValidOperations()
         {
-            if (App.Customer == null)
-                return;
-            string[] operations = App.Customer.InsuranceProgramValidOperations.Split(',');
-            //string[] operations =new string[] { "0", "1", "2", "3", "4", "5", "6", "7" };
+            var operations = GetOperations(App.Customer);
             MenuItems.Clear();
+            SetOperations(operations);
+            ActivateProgram("communication");
+        }
+
+        private void SetOperations(string[] operations)
+        {
+            //string[] operations =new string[] { "0", "1", "2", "3", "4", "5", "6", "7" };
+            if (operations == null || operations.Length == 0) return;
             foreach (string operation in operations)
                 ActivateProgram(operation);
+        }
 
-            ActivateProgram("communication");
+        private string[] GetOperations(Customer customer)
+        {
+            if (customer == null)
+                return null;
+            return App.Customer.InsuranceProgramValidOperations.Split(',');
         }
         private void ActivateProgram(string operation)
         {
@@ -239,6 +249,7 @@ namespace HWA.ViewModels
         }
         private async void InitializeConnection()
         {
+            if (App.CurrentConnectedUser == null) return;
             if (App.Service.IsConnected)
                 return;
             try

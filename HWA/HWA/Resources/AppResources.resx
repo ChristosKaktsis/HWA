@@ -147,6 +147,9 @@
   <data name="centerappointment" xml:space="preserve">
     <value>Appointment at a Diagnostic Center</value>
   </data>
+  <data name="checkout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
   <data name="checkup" xml:space="preserve">
     <value>Checkup</value>
   </data>
@@ -183,11 +186,17 @@
   <data name="docappointment" xml:space="preserve">
     <value>Appointment with a doctor</value>
   </data>
+  <data name="doctor_login" xml:space="preserve">
+    <value>Doctor login</value>
+  </data>
   <data name="email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="entry" xml:space="preserve">
     <value>Entrance</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="history" xml:space="preserve">
     <value>History</value>
@@ -225,6 +234,9 @@
   <data name="panicwarning" xml:space="preserve">
     <value>You have pressed the panic button. Signal will be send in</value>
   </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
+  </data>
   <data name="phoneNo" xml:space="preserve">
     <value>Phone</value>
   </data>
@@ -233,6 +245,9 @@
   </data>
   <data name="preftime" xml:space="preserve">
     <value>Preferred time</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Product</value>
   </data>
   <data name="profile" xml:space="preserve">
     <value>Profile</value>
@@ -243,10 +258,16 @@
   <data name="services" xml:space="preserve">
     <value>Services</value>
   </data>
+  <data name="smt_wrong" xml:space="preserve">
+    <value>Somrthing went wrong</value>
+  </data>
   <data name="specialty" xml:space="preserve">
     <value>Specialty</value>
   </data>
   <data name="submit" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>Username</value>
   </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using HWA.Data;
+using HWA.Resources;
 using HWA.Views;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace HWA.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         public Command LoginCommand { get; }
+        public Command GoToDocLoginCommand { get; }
         CustomerManager customerManager = new CustomerManager();
         private bool _ContracrHasError, _CodeHasError, _PhoneHasError, _EmailHasError, _Error;
         private string _ErrorText;
@@ -19,7 +21,11 @@ namespace HWA.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
+            GoToDocLoginCommand = new Command(GoToDocLogin);
         }
+
+        
+
         public string ContractNo 
         { 
             get => Preferences.Get(nameof(ContractNo), ""); 
@@ -80,12 +86,15 @@ namespace HWA.ViewModels
             try
             {
                 IsBusy = true;
-                if (!await CustomerHasError(cid))
-                    await Shell.Current.GoToAsync($"//{nameof(MainMenu)}");
+                if (await CustomerHasError(cid)) return;
+
+                App.CurrentConnectedUser = new Models.User { Name = App.Customer.Name };
+                await Shell.Current.GoToAsync($"//{nameof(MainMenu)}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                await Shell.Current.DisplayAlert($"{AppResources.error}", $"{AppResources.smt_wrong}", "Ok");
             }
             finally
             {
@@ -124,15 +133,18 @@ namespace HWA.ViewModels
                 if (await CustomerHasError(result.Info))
                     return;
                 Preferences.Set("customer_id", result.Info);
+                App.CurrentConnectedUser = new Models.User { Name = App.Customer.Name };
                 await Shell.Current.GoToAsync($"//{nameof(MainMenu)}");
             }
             catch(System.Net.Http.HttpRequestException httpex)
             {
                 Console.WriteLine(httpex);
+                await Shell.Current.DisplayAlert($"{AppResources.error}", $"{AppResources.smt_wrong}", "Ok");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                await Shell.Current.DisplayAlert($"{AppResources.error}", $"{AppResources.smt_wrong}", "Ok");
             }
             finally
             {
@@ -147,6 +159,10 @@ namespace HWA.ViewModels
             PhoneHasError = string.IsNullOrWhiteSpace(Phone);
             //EmailHasError = string.IsNullOrWhiteSpace(Email);
             return ContracrHasError || CodeHasError || PhoneHasError || EmailHasError;
+        }
+        private async void GoToDocLogin(object obj)
+        {
+            await Shell.Current.GoToAsync("//LoginDoctor");
         }
     }
 }

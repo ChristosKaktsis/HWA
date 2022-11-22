@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:template="clr-namespace:HWA.Templates" xmlns:vm="clr-namespace:HWA.ViewModels" 
-             xmlns:collectionview="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
+             xmlns:resources="clr-namespace:HWA.Resources"
              x:Class="HWA.Views.CommunicationPage"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False"
+             Title="{Static resources:AppResources.communication}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="user_template">

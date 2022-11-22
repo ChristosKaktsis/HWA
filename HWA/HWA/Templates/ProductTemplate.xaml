@@ -6,8 +6,10 @@
              x:DataType="model:StripeProduct">
   <Frame>
       <StackLayout>
-            <Label Text="{Binding Name}" />
-            <Label Text="{Binding Description}" />
-        </StackLayout>
+            <Label Text="{Binding Description}" 
+                   FontSize="20" FontAttributes="Bold"/>
+            <Label Text="{Binding Price,StringFormat='{0} €'}"
+                   FontSize="17"/>
+      </StackLayout>
   </Frame>
 </Frame>

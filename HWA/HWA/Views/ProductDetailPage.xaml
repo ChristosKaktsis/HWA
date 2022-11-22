@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:HWA.ViewModels"
+             xmlns:resources="clr-namespace:HWA.Resources" 
+             x:Class="HWA.Views.ProductDetailPage"
+             Shell.TabBarIsVisible="False"
+             Title="{Static resources:AppResources.product}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="HasShadow" Value="False"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="VerticalOptions" Value="End"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:DataType="vm:ProductDetailViewModel">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0">
+                <StackLayout>
+                    <Label Text="{Binding Product.Description}"
+                           FontSize="30"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="1">
+                <StackLayout>
+                    <BoxView Style="{StaticResource Separator}"/>
+                    <Label Text="{Binding Product.Comments}"
+                       FontSize="17"/>
+                    
+                </StackLayout>
+                
+            </Frame>
+            <Frame Grid.Row="2">
+                <Label Text="{Binding Product.Price,StringFormat='{0} €'}"
+                           FontSize="20"/>
+            </Frame>
+            <Grid Grid.Row="3"
+                  Padding="10">
+                <Button Grid.Column="0"
+                        VerticalOptions="End"
+                        Style="{StaticResource ReverseButton}"
+                        Text="{Static resources:AppResources.cancel}" 
+                        Command="{Binding CancelCommand}"/>
+                <Button Grid.Column="1"
+                    Text="{Static resources:AppResources.checkout}" 
+                        
+                    Command="{Binding CheckoutCommand}"/>
+            </Grid>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

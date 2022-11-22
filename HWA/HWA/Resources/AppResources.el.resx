@@ -147,6 +147,9 @@
   <data name="centerappointment" xml:space="preserve">
     <value>Ραντεβού σε Διαγνωστικό Κέντρο</value>
   </data>
+  <data name="checkout" xml:space="preserve">
+    <value>Αγορά</value>
+  </data>
   <data name="checkup" xml:space="preserve">
     <value>Checkup</value>
   </data>
@@ -183,11 +186,17 @@
   <data name="docappointment" xml:space="preserve">
     <value>Ραντεβού με γιατρό</value>
   </data>
+  <data name="doctor_login" xml:space="preserve">
+    <value>Σύνδεση γιατρού</value>
+  </data>
   <data name="email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="entry" xml:space="preserve">
     <value>Είσοδος</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Σφάλμα</value>
   </data>
   <data name="history" xml:space="preserve">
     <value>Ιστορικό</value>
@@ -225,6 +234,9 @@
   <data name="panicwarning" xml:space="preserve">
     <value>Έχετε πατήσει το κουμπί πανικού. Το σήμα θα σταλεί σε</value>
   </data>
+  <data name="password" xml:space="preserve">
+    <value>Κωδικός</value>
+  </data>
   <data name="phoneNo" xml:space="preserve">
     <value>Τηλέφωνο</value>
   </data>
@@ -233,6 +245,9 @@
   </data>
   <data name="preftime" xml:space="preserve">
     <value>Προτιμώμενη ώρα</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Προϊόν</value>
   </data>
   <data name="profile" xml:space="preserve">
     <value>Προφίλ</value>
@@ -243,10 +258,16 @@
   <data name="services" xml:space="preserve">
     <value>Υπηρεσίες</value>
   </data>
+  <data name="smt_wrong" xml:space="preserve">
+    <value>Κάτι πήγε στραβά</value>
+  </data>
   <data name="specialty" xml:space="preserve">
     <value>Ειδικότητα</value>
   </data>
   <data name="submit" xml:space="preserve">
     <value>Υποβολή</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>Όνομα χρήστη</value>
   </data>
 </root>

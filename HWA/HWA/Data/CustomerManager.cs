@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -32,6 +33,14 @@ namespace HWA.Data
 
             return JsonConvert.DeserializeObject<Response>(
                 await response.Content.ReadAsStringAsync());
+        }
+        public async Task<Response> GetDoctorAccount(string username , string password)
+        {
+            HttpClient client = await GetClient();
+            var encode = Base64Encode(password);
+            var result = await client.GetStringAsync(
+                $"{BaseAddress}HWADoctorLogin?UserName={username}&Password={encode}");
+            return JsonConvert.DeserializeObject<Response>(result);
         }
         public async Task<IEnumerable<History>> GetHistory(string inId, string cid, string ccode, string contractNo)
         {

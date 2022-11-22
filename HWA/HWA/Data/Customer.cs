@@ -11,5 +11,6 @@ namespace HWA.Data
         public string InsuranceProgramID { get; set; }
         public string InsuranceProgramValidOperations { get; set; }
         public string ErrorMessage { get; set; }
+        public string Name { get; set; }
     }
 }

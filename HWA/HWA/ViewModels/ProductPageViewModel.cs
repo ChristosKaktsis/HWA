@@ -10,25 +10,11 @@ using Xamarin.Forms;
 
 namespace HWA.ViewModels
 {
-    public class ProductPageViewModel
+    public class ProductPageViewModel : BaseViewModel
     {
         public ProductPageViewModel()
         {
-            ProductCollection = new ObservableCollection<StripeProduct>()
-            {
-                new StripeProduct{
-                    Name = "Product 1" ,
-                    Description = "Product 1 Description",
-                    Link ="https://buy.stripe.com/test_00gfZUaJH9Rq3de6oo"
-                },
-                 new StripeProduct{
-                    Name = "Product 2" ,
-                    Description = "Product 2 Description",
-                    Link ="https://buy.stripe.com/test_7sIaFA2dbbZyg00145"
-                }
-            };
-            GoToCheckoutCommand = new Command<StripeProduct>(GoToCheckout);
-
+            GoToDetailCommand = new Command<StripeProduct>(GoToDetail);
         }
         public async void OnAppearing()
         {
@@ -37,26 +23,34 @@ namespace HWA.ViewModels
 
         private async Task LoadProducts()
         {
+            IsBusy = true;
             try
             {
+                ProductCollection.Clear();
                 ProductManager manager = new ProductManager();
                 var items = await manager.GetStripeProducts();
+                foreach (var item in items)
+                    ProductCollection.Add(item);
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
             }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
-        private async void GoToCheckout(StripeProduct product)
+        private async void GoToDetail(StripeProduct product)
         {
             if(product == null) return;
-            await Shell.Current.Navigation.PushAsync(new CheckoutPage(product.Link));
+            await Shell.Current.Navigation.PushAsync(new ProductDetailPage(product));
         }
 
-        public Command<StripeProduct> GoToCheckoutCommand { get; }
-        public ObservableCollection<StripeProduct> ProductCollection 
-        { get; set; } 
+        public Command<StripeProduct> GoToDetailCommand { get; }
+        public ObservableCollection<StripeProduct> ProductCollection
+        { get; set; } = new ObservableCollection<StripeProduct>();
 
     }
 }

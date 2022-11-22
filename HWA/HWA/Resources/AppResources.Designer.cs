@@ -160,6 +160,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Checkout.
+        /// </summary>
+        internal static string checkout {
+            get {
+                return ResourceManager.GetString("checkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checkup.
         /// </summary>
         internal static string checkup {
@@ -268,6 +277,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Doctor login.
+        /// </summary>
+        internal static string doctor_login {
+            get {
+                return ResourceManager.GetString("doctor_login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string email {
@@ -282,6 +300,15 @@ namespace HWA.Resources {
         internal static string entry {
             get {
                 return ResourceManager.GetString("entry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
             }
         }
         
@@ -385,6 +412,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string password {
+            get {
+                return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone.
         /// </summary>
         internal static string phoneNo {
@@ -408,6 +444,15 @@ namespace HWA.Resources {
         internal static string preftime {
             get {
                 return ResourceManager.GetString("preftime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product.
+        /// </summary>
+        internal static string product {
+            get {
+                return ResourceManager.GetString("product", resourceCulture);
             }
         }
         
@@ -439,6 +484,15 @@ namespace HWA.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Somrthing went wrong.
+        /// </summary>
+        internal static string smt_wrong {
+            get {
+                return ResourceManager.GetString("smt_wrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Specialty.
         /// </summary>
         internal static string specialty {
@@ -453,6 +507,15 @@ namespace HWA.Resources {
         internal static string submit {
             get {
                 return ResourceManager.GetString("submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string username {
+            get {
+                return ResourceManager.GetString("username", resourceCulture);
             }
         }
     }

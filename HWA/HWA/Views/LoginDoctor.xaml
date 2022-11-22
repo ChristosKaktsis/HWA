@@ -1,23 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:editors="http://schemas.devexpress.com/xamarin/2014/forms/editors"
              xmlns:resources="clr-namespace:HWA.Resources"
-             mc:Ignorable="d"
-             x:Class="HWA.Views.LoginPage"
+             x:Class="HWA.Views.LoginDoctor"
              Shell.NavBarIsVisible="False">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <OnPlatform.iOS>
-                0, 30, 0, 0
-            </OnPlatform.iOS>
-            <OnPlatform.Android>
-                0, 0, 0, 0
-            </OnPlatform.Android>
-        </OnPlatform>
-    </ContentPage.Padding>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="editors:TextEdit">
@@ -33,7 +20,6 @@
                 <RowDefinition Height="100"/>
 
             </Grid.RowDefinitions>
-            
             <Image Source="logoWhite.png"
                    HeightRequest="220"
                    VerticalOptions="Start"/>
@@ -41,34 +27,29 @@
                     Margin="10" Padding="0" CornerRadius="120"
                     HorizontalOptions="End" VerticalOptions="Start"
                     BackgroundColor="LightGray">
-                <ImageButton Source="doc.png"
-                    Command="{Binding GoToDocLoginCommand}"/>
+                <ImageButton Source="profile.png"
+                             Padding="10"
+                    Command="{Binding GoToLoginCommand}"/>
             </Frame>
-           
             <Frame VerticalOptions="End" HasShadow="False"
                    BackgroundColor="Transparent">
                 <StackLayout Spacing="7">
+                    <Label Text="{Static resources:AppResources.doctor_login}"
+                           HorizontalOptions="Center"/>
                     <Label Text="{Binding ErrorText}"
                            TextColor="{StaticResource Warning}"
                            IsVisible="{Binding HasError}"/>
                     <Label Text="{Static resources:AppResources.entry}"
                            FontSize="25" FontAttributes="Bold"/>
-                    <editors:TextEdit Text="{Binding ContractNo}"
-                                      LabelText="{Static resources:AppResources.contractNo}"
+                    <editors:TextEdit Text="{Binding UserName}"
+                                      LabelText="{Static resources:AppResources.username}"
                                       HasError="{Binding ContracrHasError}"
                                       />
-                    <editors:TextEdit Text="{Binding CustomerCode}"
-                                      LabelText="{Static resources:AppResources.customercode}"
+                    <editors:TextEdit Text="{Binding Password}"
+                                      LabelText="{Static resources:AppResources.password}"
                                       HasError="{Binding CodeHasError}"
                                       />
-                    <editors:TextEdit Text="{Binding Phone}"
-                                      Keyboard="Telephone"
-                                      LabelText="{Static resources:AppResources.phoneNo}"
-                                      HasError="{Binding PhoneHasError}"/>
-                    <editors:TextEdit Text="{Binding Email}"
-                                      Keyboard="Email"
-                                      LabelText="{Static resources:AppResources.email}"
-                                      />
+                    
                 </StackLayout>
             </Frame>
 
@@ -80,10 +61,5 @@
                     IsEnabled="{Binding LockButtton}"/>
             <ActivityIndicator IsRunning="{Binding IsBusy}" HorizontalOptions="Center"/>
         </Grid>
-        
-        <!--<StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-
-                    <Button VerticalOptions="Center" Text="{x:Static resources:Strings.login}" Command="{Binding LoginCommand}"/>
-                </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

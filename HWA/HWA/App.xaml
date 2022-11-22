@@ -103,6 +103,13 @@
             <Style TargetType="editors:DateEdit">
                 <Setter Property="HeightRequest" Value="45"/>
             </Style>
+            <Style x:Key="Separator" TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Color" Value="Gray" />
+                <Setter Property="Margin" Value="0, 5, 0, 5" />
+                <Setter Property="Opacity" Value="0.5" />
+            </Style>
             <!--deletethisafterdatainput-->
             <x:Array Type="{x:Type x:String}" x:Key="city">
                 <x:String>Θεσσαλονίκη</x:String>
