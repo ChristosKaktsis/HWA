@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "558902686532",
+    "project_id": "hwafcm",
+    "storage_bucket": "hwafcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558902686532:android:c5eac09fa56ffa3ed01d11",
+        "android_client_info": {
+          "package_name": "com.exelixissoftware.hwa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558902686532-rbb60umvoqm2fulnes4tvuujhc36ruir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbynF1c9CYg3Q_BEGVyqzqjd9REsHYluU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558902686532-rbb60umvoqm2fulnes4tvuujhc36ruir.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

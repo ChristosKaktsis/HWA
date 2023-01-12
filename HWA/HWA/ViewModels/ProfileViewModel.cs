@@ -37,6 +37,9 @@ namespace HWA.ViewModels
         private async Task Logout()
         {
             Preferences.Remove("customer_id");
+            //disconnect from hub
+            if (App.Service.IsConnected)
+                await App.Service.DisconnectToHub();
             await Shell.Current.GoToAsync("//LoginPage");
         }
     }

@@ -55,6 +55,13 @@
                              Source="call.png"
                              Clicked="accept_btn_Clicked"/>
             </Frame>
+            <!--<Frame Grid.Column="1"
+                   Style="{StaticResource action_circle_frame}" 
+                   BackgroundColor="Green">
+                <ImageButton x:Name="noCamera_btn" 
+                             Source="videocam_off.png"
+                             Clicked="noCamera_btn_Clicked"/>
+            </Frame>-->
             <Frame Grid.Column="1"
                    Style="{StaticResource action_circle_frame}"
                    BackgroundColor="Red">

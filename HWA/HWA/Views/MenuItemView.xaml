@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:HWA.ViewModels"
              x:Class="HWA.Views.MenuItemView"
-             Padding="10" WidthRequest="120" HeightRequest="120"
+             Padding="2" WidthRequest="120" HeightRequest="120"
              HasShadow="False" >
     <Frame  WidthRequest="100" HeightRequest="100" 
             BackgroundColor="{StaticResource Primary}"

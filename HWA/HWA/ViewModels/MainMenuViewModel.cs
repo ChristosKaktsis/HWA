@@ -35,10 +35,17 @@ namespace HWA.ViewModels
             PanicCommand = new Command(async () =>await CountdownToPanic());
             StopTimer = new Command(() => Panic_Warning = false);
             //PanicCommand = new Command(async () => await PanicPressed());
-            App.Service = new SignalRService(Connection.Url);
+            CreateConnection();
             AskPermissions();
         }
-
+        private void CreateConnection()
+        {
+            if (DeviceInfo.Platform == DevicePlatform.iOS) return;
+            if (App.Service is null)
+            {
+                App.Service = new SignalRService(Connection.Url);
+            }
+        }
         public  void OnAppearing() 
         {
             CheckUserValidOperations();
@@ -49,9 +56,9 @@ namespace HWA.ViewModels
             var operations = GetOperations(App.Customer);
             MenuItems.Clear();
             SetOperations(operations);
+            if (DeviceInfo.Platform == DevicePlatform.iOS) return;
             ActivateProgram("communication");
         }
-
         private void SetOperations(string[] operations)
         {
             //string[] operations =new string[] { "0", "1", "2", "3", "4", "5", "6", "7" };
@@ -59,7 +66,6 @@ namespace HWA.ViewModels
             foreach (string operation in operations)
                 ActivateProgram(operation);
         }
-
         private string[] GetOperations(Customer customer)
         {
             if (customer == null)
@@ -249,7 +255,10 @@ namespace HWA.ViewModels
         }
         private async void InitializeConnection()
         {
+            // not implemented for ios
+            if (DeviceInfo.Platform == DevicePlatform.iOS) return;
             if (App.CurrentConnectedUser == null) return;
+
             if (App.Service.IsConnected)
                 return;
             try
@@ -261,7 +270,6 @@ namespace HWA.ViewModels
                 App.Service.OnAcceptCall(Accepted);
                 App.Service.OnRejectCall(Rejected);
                 App.Service.OnEndCall(CallEnded);
-
                 await App.Service.ConnectToHub();
             }
             catch (Exception ex)
@@ -298,8 +306,11 @@ namespace HWA.ViewModels
         {
             var finduser = Users.Where(u => u.ID == id).FirstOrDefault();
             if (finduser is null) return;
+            //you should be on Calling page when you recieve accept
             Device.BeginInvokeOnMainThread(async () =>
             {
+                await Shell.Current.Navigation.PopAsync();
+
                 await Shell.Current.Navigation.PushAsync(new VideoCallPage(App.CurrentConnectedUser.ID, finduser.ID));
             });
         }
@@ -308,6 +319,12 @@ namespace HWA.ViewModels
             try 
             {
                 Console.WriteLine("Call rejected");
+                //you should be on Calling page when you recieve accept
+                //also this closes incoming call page 
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Shell.Current.Navigation.PopAsync();
+                });
             }
             catch(Exception ex)
             {
@@ -324,6 +341,7 @@ namespace HWA.ViewModels
         }
         private async void AskPermissions()
         {
+            if (DeviceInfo.Platform == DevicePlatform.iOS) return;
             try
             {
                 var status = await Permissions.CheckStatusAsync<Permissions.Camera>();

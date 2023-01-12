@@ -10,8 +10,6 @@
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Margin" Value="20"/>
                 <Setter Property="CornerRadius" Value="35"/>
-                <Setter Property="VerticalOptions" Value="End"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="HeightRequest" Value="70"/>
                 <Setter Property="WidthRequest" Value="70"/>
             </Style>
@@ -24,12 +22,30 @@
     <Grid>
         <views:GenericWebView x:Name="CallWebView" VerticalOptions="FillAndExpand" 
                  HorizontalOptions="FillAndExpand"/>
-        <Frame 
+        <Frame HorizontalOptions="Start" VerticalOptions="End"
+                   Style="{StaticResource action_circle_frame}"
+                   BackgroundColor="{Binding IsMicOn, 
+            Converter={StaticResource BoolToColorConverter}, 
+            ConverterParameter=#eeeeee|#039BE5}">
+            <ImageButton x:Name="togglemic_btn" 
+                             Source="mic_off.png"
+                        Clicked="togglemic_btn_Clicked" />
+        </Frame>
+        <Frame HorizontalOptions="Center" VerticalOptions="End"
                    Style="{StaticResource action_circle_frame}"
                    BackgroundColor="Red">
             <ImageButton x:Name="reject_btn" 
                              Source="call_end.png"
                          Clicked="reject_btn_Clicked"/>
+        </Frame>
+        <Frame HorizontalOptions="End" VerticalOptions="End"
+                   Style="{StaticResource action_circle_frame}"
+                   BackgroundColor="{Binding IsCameraOn, 
+            Converter={StaticResource BoolToColorConverter}, 
+            ConverterParameter=#eeeeee|#039BE5}">
+            <ImageButton x:Name="togglecamera_btn" 
+                             Source="videocam_off.png"
+                        Clicked="togglecamera_btn_Clicked" />
         </Frame>
     </Grid>
 </ContentPage>

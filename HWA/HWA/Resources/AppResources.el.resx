@@ -172,7 +172,7 @@
     <value>Κλείσιμο</value>
   </data>
   <data name="communication" xml:space="preserve">
-    <value>Επικοινωνία</value>
+    <value>Video Κλήση με γιατρό</value>
   </data>
   <data name="contractNo" xml:space="preserve">
     <value>Αριθμός Συμβολαίου</value>
@@ -185,6 +185,9 @@
   </data>
   <data name="docappointment" xml:space="preserve">
     <value>Ραντεβού με γιατρό</value>
+  </data>
+  <data name="docinfo" xml:space="preserve">
+    <value>Ο γιατρός ενημερώθηκε</value>
   </data>
   <data name="doctor_login" xml:space="preserve">
     <value>Σύνδεση γιατρού</value>
@@ -221,6 +224,15 @@
   </data>
   <data name="new" xml:space="preserve">
     <value>δδ</value>
+  </data>
+  <data name="notification_error" xml:space="preserve">
+    <value>Κάτι πήγε στραβά και η ειδοποίηση δεν στάλθηκε στον γιατρό. Δοκιμάστε ξανά αργότερα.</value>
+  </data>
+  <data name="notification_notsend" xml:space="preserve">
+    <value>Η ειδοποίηση δεν στάλθηκε</value>
+  </data>
+  <data name="notification_send" xml:space="preserve">
+    <value>Αποστέλλεται ειδοποίηση στον τρέχοντα γιατρό. Θα εμφανιστεί ανά πάσα στιγμή!!</value>
   </data>
   <data name="otherdate" xml:space="preserve">
     <value>Εναλλακτική ημερομηνία</value>

@@ -1,4 +1,5 @@
 ﻿using HWA.Models;
+using HWA.Services;
 using HWA.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace HWA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IncommingCallPage : ContentPage
     {
+        SoundService soundService = new SoundService();
         private IncommingCallViewModel _viewModel;
         private string id_calling;
         private string name;
@@ -28,6 +30,12 @@ namespace HWA.Views
         {
             base.OnAppearing();
             user_label.Text = $"From : {name}";
+            soundService.Start();
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            soundService.Stop();
         }
         private async void accept_btn_Clicked(object sender, EventArgs e)
         {
@@ -37,6 +45,11 @@ namespace HWA.Views
         private async void reject_btn_Clicked(object sender, EventArgs e)
         {
             await _viewModel.RejectCall(id_calling);
+        }
+
+        private async void noCamera_btn_Clicked(object sender, EventArgs e)
+        {
+            await _viewModel.AcceptCall(id_calling,false);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using HWA.Models;
+using HWA.Network;
+using HWA.Resources;
 using HWA.Services;
 using HWA.Views;
 using System;
@@ -30,8 +32,26 @@ namespace HWA.ViewModels
         }
         public async void OnAppearing()
         {
-             //await App.Service.DisconnectToHub();
+            //await App.Service.DisconnectToHub();
+            if (App.CurrentConnectedUser.IsDoctor) return;
+            var result = await TokenApi.NotifyDoctor();
+            ShowNotifyOnScreen(result);
         }
+
+        private async void ShowNotifyOnScreen(bool result)
+        {
+            if (result)
+                await Shell.Current.DisplayAlert(
+                    AppResources.docinfo,
+                    AppResources.notification_send, 
+                    "OK");
+            else
+                await Shell.Current.DisplayAlert(
+                    AppResources.notification_notsend,
+                    AppResources.notification_error,
+                    "OK");
+        }
+
         private async void SendMessage()
         {
             if (!App.Service.IsConnected)
@@ -55,6 +75,7 @@ namespace HWA.ViewModels
             {
                 await App.Service.CallUser(User.ID);
                 messages.Add("Calling ...");
+                await Shell.Current.Navigation.PushAsync(new CallingPage(User));
             }
             catch (Exception ex)
             {

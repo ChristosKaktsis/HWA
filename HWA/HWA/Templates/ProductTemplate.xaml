@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:model="clr-namespace:HWA.Models"
              x:Class="HWA.Templates.ProductTemplate"
-             x:DataType="model:StripeProduct">
+             x:DataType="model:StripeProduct"
+             HasShadow="False">
   <Frame>
       <StackLayout>
             <Label Text="{Binding Description}" 

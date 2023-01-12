@@ -232,7 +232,7 @@ namespace HWA.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Communication.
+        ///   Looks up a localized string similar to Doctor Video Call.
         /// </summary>
         internal static string communication {
             get {
@@ -273,6 +273,15 @@ namespace HWA.Resources {
         internal static string docappointment {
             get {
                 return ResourceManager.GetString("docappointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doctor Is informed.
+        /// </summary>
+        internal static string docinfo {
+            get {
+                return ResourceManager.GetString("docinfo", resourceCulture);
             }
         }
         
@@ -372,6 +381,33 @@ namespace HWA.Resources {
         internal static string netlist {
             get {
                 return ResourceManager.GetString("netlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong and the notification did not send to the doctor. Try agan later..
+        /// </summary>
+        internal static string notification_error {
+            get {
+                return ResourceManager.GetString("notification_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification did not send.
+        /// </summary>
+        internal static string notification_notsend {
+            get {
+                return ResourceManager.GetString("notification_notsend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A notification is send to the current doctor. He will appear any moment!!.
+        /// </summary>
+        internal static string notification_send {
+            get {
+                return ResourceManager.GetString("notification_send", resourceCulture);
             }
         }
         

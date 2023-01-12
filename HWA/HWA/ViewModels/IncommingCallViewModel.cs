@@ -1,4 +1,5 @@
-﻿using HWA.Views;
+﻿using HWA.Services;
+using HWA.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,12 +13,12 @@ namespace HWA.ViewModels
         public IncommingCallViewModel()
         {
         }
-        public async Task AcceptCall(string id)
+        public async Task AcceptCall(string id,bool cameraOn = true)
         {
             await App.Service.AcceptCall(id);
             //await App.Service.DisconnectToHub();
             await Shell.Current.Navigation.PopAsync();
-            await Shell.Current.Navigation.PushAsync(new VideoCallPage(App.CurrentConnectedUser.ID, id));
+            await Shell.Current.Navigation.PushAsync(new VideoCallPage(App.CurrentConnectedUser.ID, id, cameraOn));
         }
         public async Task RejectCall(string id)
         {

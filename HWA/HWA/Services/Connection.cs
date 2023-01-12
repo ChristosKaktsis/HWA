@@ -13,16 +13,18 @@ namespace HWA.Services
 {
     public class Connection
     {
+        public static string SignalRAddress { get => $"http://{Url}:7110"; }
         public static string Url
         {
             get
             {
-                string ip = "192.168.3.20";
-                //string ip = "79.129.5.42";
+                //string ip = "192.168.3.20";
+                //string ip = "192.168.3.41";
+                string ip = "79.129.5.42";
 #if DEBUG
-                ip = "10.0.2.2";
-                //ip = "192.168.3.99";
-                //ip = "79.129.5.42";
+                //ip = "10.0.2.2";
+                //ip = "192.168.3.41";
+                ip = "79.129.5.42";
 #endif
                 var device = DeviceInfo.Platform;
                 if (device == DevicePlatform.Android) return ip;

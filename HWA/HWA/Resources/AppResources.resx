@@ -172,7 +172,7 @@
     <value>Close</value>
   </data>
   <data name="communication" xml:space="preserve">
-    <value>Communication</value>
+    <value>Doctor Video Call</value>
   </data>
   <data name="contractNo" xml:space="preserve">
     <value>Contract number</value>
@@ -185,6 +185,9 @@
   </data>
   <data name="docappointment" xml:space="preserve">
     <value>Appointment with a doctor</value>
+  </data>
+  <data name="docinfo" xml:space="preserve">
+    <value>Doctor Is informed</value>
   </data>
   <data name="doctor_login" xml:space="preserve">
     <value>Doctor login</value>
@@ -221,6 +224,15 @@
   </data>
   <data name="new" xml:space="preserve">
     <value>dd</value>
+  </data>
+  <data name="notification_error" xml:space="preserve">
+    <value>Something went wrong and the notification did not send to the doctor. Try agan later.</value>
+  </data>
+  <data name="notification_notsend" xml:space="preserve">
+    <value>Notification did not send</value>
+  </data>
+  <data name="notification_send" xml:space="preserve">
+    <value>A notification is send to the current doctor. He will appear any moment!!</value>
   </data>
   <data name="otherdate" xml:space="preserve">
     <value>Alternative date</value>

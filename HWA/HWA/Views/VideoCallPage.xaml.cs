@@ -16,9 +16,10 @@ namespace HWA.Views
     {
         private string current_id;
         private string other_id;
+        private bool cameraOn;
         private VideoCallViewModel _viewModel;
 
-        public VideoCallPage(string current_id, string other_id)
+        public VideoCallPage(string current_id, string other_id,bool cameraOn = true)
         {
             InitializeComponent();
             BindingContext = _viewModel = new VideoCallViewModel();
@@ -28,12 +29,17 @@ namespace HWA.Views
             CallWebView.Source = urlSource;
             this.current_id = current_id;
             this.other_id = other_id;
+            this.cameraOn = cameraOn;
         }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             await Task.Delay(2000);
             await Connect();
+            //if (cameraOn) return;
+            //await Task.Delay(2000);
+            //_viewModel.IsCameraOn = false;
+            //await CallWebView.EvaluateJavaScriptAsync($"toggleVideo('{false}');");
         }
         private async Task Connect()
         {
@@ -61,6 +67,16 @@ namespace HWA.Views
         {
             await _viewModel.EndCall(other_id);
             await Shell.Current.Navigation.PopAsync();
+        }
+        private async void togglecamera_btn_Clicked(object sender, EventArgs e)
+        {
+            _viewModel.IsCameraOn = !_viewModel.IsCameraOn;
+            await CallWebView.EvaluateJavaScriptAsync($"toggleVideo('{_viewModel.IsCameraOn.ToString().ToLower()}');");
+        }
+        private async void togglemic_btn_Clicked(object sender, EventArgs e)
+        {
+            _viewModel.IsMicOn = !_viewModel.IsMicOn;
+            await CallWebView.EvaluateJavaScriptAsync($"toggleAudio('{_viewModel.IsMicOn.ToString().ToLower()}');");
         }
     }
 }

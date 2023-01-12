@@ -23,9 +23,7 @@ namespace HWA.ViewModels
             LoginCommand = new Command(OnLoginClicked);
             GoToDocLoginCommand = new Command(GoToDocLogin);
         }
-
         
-
         public string ContractNo 
         { 
             get => Preferences.Get(nameof(ContractNo), ""); 
@@ -90,6 +88,7 @@ namespace HWA.ViewModels
 
                 App.CurrentConnectedUser = new Models.User { Name = App.Customer.Name };
                 await Shell.Current.GoToAsync($"//{nameof(MainMenu)}");
+                
             }
             catch (Exception ex)
             {
@@ -162,6 +161,7 @@ namespace HWA.ViewModels
         }
         private async void GoToDocLogin(object obj)
         {
+            if (DeviceInfo.Platform == DevicePlatform.iOS) return;
             await Shell.Current.GoToAsync("//LoginDoctor");
         }
     }

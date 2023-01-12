@@ -1,4 +1,5 @@
-﻿using HWA.ViewModels;
+﻿using HWA.Services;
+using HWA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace HWA.Views
             InitializeComponent();
             BindingContext = _viewModel = new MainMenuViewModel();
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

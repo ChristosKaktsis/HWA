@@ -1,4 +1,5 @@
 ﻿using HWA.Data;
+using HWA.Network;
 using HWA.Resources;
 using HWA.Views;
 using System;
@@ -27,6 +28,7 @@ namespace HWA.ViewModels
             if (IsSomethingEmpty()) return;
             try
             {
+                IsBusy= true;
                 var manager = new CustomerManager();
                 var result = await manager.GetDoctorAccount(UserName, Password);
                 if(HasError = result.StatusCode !="200")
@@ -35,6 +37,7 @@ namespace HWA.ViewModels
                     return;
                 }
                 App.CurrentConnectedUser = new Models.User { Name = result.Info , IsDoctor = true};
+                SendToken(App.Token);
                 await Shell.Current.GoToAsync($"//{nameof(MainMenu)}");
             }
             catch (Exception e)
@@ -42,6 +45,12 @@ namespace HWA.ViewModels
                 Console.WriteLine(e);
                 await Shell.Current.DisplayAlert($"{AppResources.error}", $"{AppResources.smt_wrong}", "Ok");
             }
+            finally { IsBusy = false; }
+        }
+        private async void SendToken(string token)
+        {
+            if(string.IsNullOrEmpty(token)) return;
+            await TokenApi.SendToken(token);
         }
         private bool IsSomethingEmpty()
         {
@@ -74,8 +83,6 @@ namespace HWA.ViewModels
             get { return _HasError; }
             set => SetProperty(ref _HasError, value);
         }
-
-
         public Command LoginCommand { get; }
         public Command GoToLoginCommand { get; }
     }
